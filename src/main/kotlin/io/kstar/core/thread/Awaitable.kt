@@ -28,6 +28,5 @@ fun interface Awaitable
      * @param unit The time unit
      * @return True if the awaited condition occurred, false if it timed out.
      */
-    @Throws(InterruptedException::class)
     fun await(wait: Long, unit: TimeUnit): Boolean
 }

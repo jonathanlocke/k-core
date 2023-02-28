@@ -8,7 +8,6 @@ import io.kstar.core.language.Booleans.isFalse
 import io.kstar.core.language.Booleans.isTrue
 import io.kstar.core.language.Objects.equalsAny
 
-
 /**
  * Extension methods for [Boolean] values.
  *

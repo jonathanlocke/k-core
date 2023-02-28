@@ -2,7 +2,7 @@
 
 package io.kstar.core.language
 
-import io.kstar.core.language.Throws.illegalArgument
+import io.kstar.core.language.Throw.illegalArgument
 
 object Objects
 {

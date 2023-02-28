@@ -2,7 +2,7 @@
 
 package io.kstar.core.values
 
-import io.kstar.core.language.Throws.illegalArgument
+import io.kstar.core.language.Throw.illegalArgument
 import io.kstar.core.values.Bytes.Companion.gigabytes
 import io.kstar.core.values.Bytes.Companion.kilobytes
 import io.kstar.core.values.Bytes.Companion.megabytes
@@ -125,7 +125,7 @@ class Bytes(val bytes: Long) : Countable<Bytes>, AsString
         }
     }
 
-    override fun onNewT(value: Long): Bytes = bytes(value)
+    override fun onNew(value: Long): Bytes = bytes(value)
 
     override fun maximum(): Long = 0
     override fun minimum(): Long = MAX_VALUE

@@ -14,5 +14,5 @@ value class Minimum(private val value: Long) : Countable<Minimum>
 
     override fun asLong(): Long = value
 
-    override fun onNewT(value: Long): Minimum = Minimum(value)
+    override fun onNew(value: Long): Minimum = Minimum(value)
 }

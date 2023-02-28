@@ -1,8 +1,8 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "UnusedReceiverParameter")
 
 package io.kstar.core.language
 
 object Doubles
 {
-    fun Double.format(digits: Int = 1) = "%.${digits}f".format(this)
+    fun Double.format(digits: Int): String = java.lang.String.format("%.${digits}f", this)
 }

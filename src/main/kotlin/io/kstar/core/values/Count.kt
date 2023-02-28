@@ -4,12 +4,12 @@ package io.kstar.core.values
 
 import io.kstar.receptors.numeric.Countable
 
-@JvmInline
 value class Count(private val value: Long) : Countable<Count>
 {
     companion object
     {
         fun count(value: Long): Count = Count(value)
+        fun count(value: Int): Count = Count(value.toLong())
     }
 
     override fun count(): Count
@@ -19,5 +19,5 @@ value class Count(private val value: Long) : Countable<Count>
 
     override fun asLong(): Long = value
 
-    override fun onNewT(value: Long): Count = Count(value)
+    override fun onNew(value: Long): Count = Count(value)
 }
