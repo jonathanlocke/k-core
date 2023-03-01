@@ -6,6 +6,7 @@ import io.kstar.annotations.quality.Documentation.DOCUMENTED
 import io.kstar.annotations.quality.Stability.STABLE
 import io.kstar.annotations.quality.Testing.TESTING_NOT_NEEDED
 import io.kstar.annotations.quality.TypeQuality
+import io.kstar.core.language.Classes.className
 
 /**
  * An object with a name. The default implementation returns the simple name of the class of this object
@@ -26,6 +27,6 @@ interface Named
      */
     fun name(): String
     {
-        return javaClass.simpleName
+        return className()
     }
 }
