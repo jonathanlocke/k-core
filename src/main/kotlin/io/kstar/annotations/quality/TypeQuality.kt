@@ -24,7 +24,7 @@ import kotlin.annotation.AnnotationTarget.*
  *     documentation = DOCUMENTED,
  *     stability = STABLE,
  *     reviews = 1,
- *     reviewers = ["shibo"]
+ *     reviewers = [ "Jonathan Locke"]
  * )
  * class MyClass
  * {
@@ -32,7 +32,7 @@ import kotlin.annotation.AnnotationTarget.*
  * }
  * ```
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  */
 @Retention(SOURCE)
 @Target(CLASS)

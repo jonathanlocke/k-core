@@ -11,7 +11,7 @@ import io.kstar.annotations.quality.Testing.*
  * The intended audience for a class or interface. Types annotated with [TypeQuality] default to an audience of
  * [PUBLIC].
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  * @see TypeQuality
  */
 @Suppress("unused")
@@ -20,7 +20,7 @@ import io.kstar.annotations.quality.Testing.*
     stability = STABLE,
     testing = TESTING_NOT_NEEDED,
     documentation = DOCUMENTED,
-    reviewers = ["shibo"]
+    reviewers = ["Jonathan Locke"]
 )
 enum class Audience
 {

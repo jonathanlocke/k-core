@@ -24,7 +24,7 @@ object Throw
         throw IllegalStateException(message, cause)
     }
 
-    fun fail(message: String = ""): Nothing
+    fun fail(message: String): Nothing
     {
         throw RuntimeException(message)
     }

@@ -11,7 +11,7 @@ import io.kstar.core.values.Bytes
 /**
  * An interface to any object whose size can be measured in bytes.
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  */
 @TypeQuality
 (

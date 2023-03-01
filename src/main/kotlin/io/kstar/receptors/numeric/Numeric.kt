@@ -12,7 +12,7 @@ import kotlin.math.min
  *
  * @author Jonathan Locke
  */
-interface Numeric<T> : Zeroable
+interface Numeric<T : Numeric<T>> : Zeroable, Comparable<T>
 {
     fun asDouble(): Double = asLong().toDouble()
     fun asFloat(): Float = asDouble().toFloat()
@@ -31,6 +31,8 @@ interface Numeric<T> : Zeroable
         return onNew(value)
     }
 
+    override fun compareTo(other: T): Int = asLong().compareTo(other.asLong())
+
     fun onNew(value: Long): T
 
     fun maximum(): Long = Long.MAX_VALUE
@@ -38,6 +40,9 @@ interface Numeric<T> : Zeroable
 
     fun maximum(that: Numeric<*>): T = new(max(asLong(), that.asLong()))
     fun minimum(that: Numeric<*>): T = new(min(asLong(), that.asLong()))
+
+    fun decremented() = new(asLong() - 1)
+    fun incremented() = new(asLong() + 1)
 
     override fun isZero(): Boolean = asLong() == 0L
 

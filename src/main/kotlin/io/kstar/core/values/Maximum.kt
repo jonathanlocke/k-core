@@ -4,9 +4,10 @@ package io.kstar.core.values
 
 import io.kstar.receptors.numeric.Countable
 
-@JvmInline
 value class Maximum(private val value: Long) : Countable<Maximum>
 {
+    constructor(value: Int) : this(value.toLong())
+
     companion object
     {
         fun maximum(value: Long): Maximum = Maximum(value)

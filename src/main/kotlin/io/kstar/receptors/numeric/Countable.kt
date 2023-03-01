@@ -12,7 +12,7 @@ import io.kstar.core.values.Count
 /**
  * Interface to something that has a [Count] value.
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  * @see Count
  */
 @TypeQuality
@@ -21,7 +21,7 @@ import io.kstar.core.values.Count
     testing = UNTESTED,
     documentation = DOCUMENTED
 )
-interface Countable<T> : Numeric<T>
+interface Countable<T : Countable<T>> : Numeric<T>
 {
     fun count(): Count = Count(asLong())
 
@@ -37,7 +37,7 @@ interface Countable<T> : Numeric<T>
         }.asSequence()
     }
 
-    fun ints(): Sequence<Int>
+    fun zeroToInts(): Sequence<Int>
     {
         return object : Iterator<Int>
         {
@@ -49,7 +49,7 @@ interface Countable<T> : Numeric<T>
         }.asSequence()
     }
 
-    fun longs(): Sequence<Long>
+    fun zeroToLongs(): Sequence<Long>
     {
         return object : Iterator<Long>
         {

@@ -50,7 +50,7 @@ import io.kstar.core.values.bits.Bits.parseBits
  * println("Blue  = ${BLUE.intFrom(rgb)}");       // 128
  * ```
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  */
 @Suppress("SpellCheckingInspection")
 @TypeQuality
@@ -111,7 +111,7 @@ class BitDiagram(diagram: String)
     override fun toString(): String
     {
         val result = StringBuilder()
-        for (i in count(diagram.length).ints())
+        for (i in count(diagram.length).zeroToInts())
         {
             result.append(diagram[i])
             if ((i + 1) % 8 == 0 && i + 1 < diagram.length)

@@ -25,7 +25,7 @@ import kotlin.annotation.AnnotationTarget.*
  * }
  * ```
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  */
 @Suppress("unused")
 @Retention(SOURCE)
@@ -36,7 +36,7 @@ import kotlin.annotation.AnnotationTarget.*
     stability = STABILITY_UNDETERMINED,
     testing = TESTING_NOT_NEEDED,
     documentation = DOCUMENTED,
-    reviewers = ["shibo"]
+    reviewers = ["Jonathan Locke"]
 )
 annotation class TypeChange
 (

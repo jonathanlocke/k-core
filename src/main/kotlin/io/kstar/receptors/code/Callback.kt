@@ -12,14 +12,14 @@ import java.util.function.Consumer
  * A simple callback interface extending [Consumer]
  *
  * @param <Value> The type of object to be passed to the callback
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  */
 @TypeQuality
 (
     stability = STABLE,
     testing = TESTING_NOT_NEEDED,
     documentation = DOCUMENTED,
-    reviewers = ["shibo"]
+    reviewers = ["Jonathan Locke"]
 )
 interface Callback<Value> : Consumer<Value>
 {

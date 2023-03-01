@@ -2,6 +2,7 @@
 
 package io.kstar.core.values
 
+import io.kstar.core.values.bits.Bits.parseBits
 import io.kstar.receptors.numeric.Countable
 import io.kstar.receptors.numeric.Numeric
 import io.kstar.receptors.numeric.Numeric.Companion.minus
@@ -12,11 +13,15 @@ import java.lang.Long.numberOfLeadingZeros
  *
  * @author Jonathan Locke
  */
-value class BitCount(private val bits: Int) : Countable<BitCount>, Numeric<BitCount>
+value class BitCount(private val bits: Long) : Countable<BitCount>, Numeric<BitCount>
 {
+    constructor(value: Int) : this(value.toLong())
+
     companion object
     {
-        fun bits(count: Int): BitCount = BitCount(count)
+        fun bits(count: Int): BitCount = BitCount(count.toLong())
+        fun bits(count: Long): BitCount = BitCount(count)
+        fun bits(count: String): BitCount = BitCount(parseBits(count))
         fun bitsPerByte(): BitCount = bits(Byte.SIZE_BITS)
         fun bitsPerChar(): BitCount = bits(Char.SIZE_BITS)
         fun bitsPerInt(): BitCount = bits(Int.SIZE_BITS)
@@ -29,12 +34,11 @@ value class BitCount(private val bits: Int) : Countable<BitCount>, Numeric<BitCo
         }
     }
 
-
     override fun onNew(value: Long): BitCount = bits(value.toInt())
 
     override fun maximum(): Long = 128
 
-    override fun asLong(): Long = bits.toLong()
+    override fun asLong(): Long = bits
 
     /**
      * Returns a mask for the values this number of bits can take on
@@ -46,7 +50,7 @@ value class BitCount(private val bits: Int) : Countable<BitCount>, Numeric<BitCo
      */
     fun values(): Int
     {
-        return 1 shl bits
+        return 1 shl bits.toInt()
     }
 
     fun minimumUnsigned(): ULong = 0U

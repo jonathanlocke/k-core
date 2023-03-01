@@ -10,7 +10,7 @@ import io.kstar.annotations.quality.TypeQuality
 /**
  * The reason why a thread completed, either it was interrupted, it timed out or it succeeded.
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  */
 @TypeQuality
 (

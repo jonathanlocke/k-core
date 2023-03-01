@@ -10,7 +10,7 @@ import io.kstar.annotations.quality.TypeQuality
 /**
  * An object with a name. The default implementation returns the simple name of the class of this object
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  */
 @TypeQuality
 (

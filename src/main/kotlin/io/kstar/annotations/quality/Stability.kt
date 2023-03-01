@@ -11,7 +11,7 @@ import io.kstar.annotations.quality.Stability.STABILITY_UNDETERMINED
  * past source code change because it is future-looking. It is based on the *anticipated* level of
  * *incompatible* change in the future.
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  * @see TypeQuality
  */
 @TypeQuality
@@ -19,7 +19,7 @@ import io.kstar.annotations.quality.Stability.STABILITY_UNDETERMINED
     stability = STABILITY_UNDETERMINED,
     documentation = DOCUMENTED,
     audience = PUBLIC,
-    reviewers = ["shibo"]
+    reviewers = ["Jonathan Locke"]
 )
 enum class Stability
 {

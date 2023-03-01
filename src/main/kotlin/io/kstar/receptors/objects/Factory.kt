@@ -8,8 +8,9 @@ import io.kstar.annotations.quality.Testing.TESTING_NOT_NEEDED
 import io.kstar.annotations.quality.TypeQuality
 
 /**
- * A value that can be watched. Calling [observe] returns the current value.
- *
+ * A factory that creates an object.
+ **
+ * @param <Value> The type of object to create
  * @author  Jonathan Locke
  */
 @TypeQuality
@@ -18,10 +19,18 @@ import io.kstar.annotations.quality.TypeQuality
     testing = TESTING_NOT_NEEDED,
     documentation = DOCUMENTED
 )
-fun interface Watchable<Value>
+fun interface Factory<Value>
 {
     /**
-     * Returns the observed value
+     * Returns a new instance of the given type
      */
-    fun observe(): Value
+    fun new(): Value
+    {
+        return onNew()
+    }
+
+    /**
+     * Returns a new instance of the given type
+     */
+    fun onNew(): Value
 }

@@ -4,9 +4,10 @@ package io.kstar.core.values
 
 import io.kstar.receptors.numeric.Countable
 
-@JvmInline
 value class Minimum(private val value: Long) : Countable<Minimum>
 {
+    constructor(value: Int) : this(value.toLong())
+
     companion object
     {
         fun minimum(value: Long): Minimum = Minimum(value)

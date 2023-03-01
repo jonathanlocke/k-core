@@ -40,7 +40,7 @@ import kotlin.annotation.AnnotationTarget.*
  * }
  * ```
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  */
 @Retention(SOURCE)
 @Target
@@ -55,7 +55,7 @@ import kotlin.annotation.AnnotationTarget.*
 (
     stability = STABILITY_UNDETERMINED,
     documentation = DOCUMENTED,
-    reviewers = ["shibo"]
+    reviewers = ["Jonathan Locke"]
 )
 annotation class MethodChange
 (

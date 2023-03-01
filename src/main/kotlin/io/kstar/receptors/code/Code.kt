@@ -8,17 +8,17 @@ import io.kstar.annotations.quality.Testing.TESTING_NOT_NEEDED
 import io.kstar.annotations.quality.TypeQuality
 
 /**
- * Code that can be executed, returning a value (and not throwing an exception), as opposed to [Runnable] which
- * does not return a value.
+ * Code that can be executed, returning a value (and not throwing an exception), as opposed to [java.lang.Runnable],
+ * which does not return a value.
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  */
 @TypeQuality
 (
     stability = STABLE,
     testing = TESTING_NOT_NEEDED,
     documentation = DOCUMENTED,
-    reviewers = ["shibo"]
+    reviewers = ["Jonathan Locke"]
 )
 fun interface Code<Value>
 {

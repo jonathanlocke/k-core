@@ -32,7 +32,7 @@ import kotlin.annotation.AnnotationTarget.*
  * }
  * ```
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  */
 @Retention(SOURCE)
 @Target

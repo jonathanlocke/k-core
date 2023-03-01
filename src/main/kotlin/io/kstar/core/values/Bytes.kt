@@ -63,6 +63,8 @@ import kotlin.math.roundToLong
  */
 class Bytes(val bytes: Long) : Countable<Bytes>, AsString
 {
+    constructor(value: Int) : this(value.toLong())
+
     companion object
     {
         private const val KILO = 1024

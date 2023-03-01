@@ -10,7 +10,7 @@ import io.kstar.annotations.quality.Testing.TESTING_NOT_NEEDED
  * An evaluation of the quality of documentation for this class, as determined by a developer. Some classes need more
  * documentation, some less, so subjective opinion is necessary to determine documentation quality level.
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  * @see TypeQuality
  */
 @TypeQuality
@@ -18,7 +18,7 @@ import io.kstar.annotations.quality.Testing.TESTING_NOT_NEEDED
     stability = STABILITY_UNDETERMINED,
     testing = TESTING_NOT_NEEDED,
     documentation = DOCUMENTED,
-    reviewers = ["shibo"]
+    reviewers = ["Jonathan Locke"]
 )
 enum class Documentation
 {

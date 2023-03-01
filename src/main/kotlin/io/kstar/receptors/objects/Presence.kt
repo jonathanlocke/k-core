@@ -8,7 +8,7 @@ import io.kstar.annotations.quality.Testing.TESTING_NOT_NEEDED
 import io.kstar.annotations.quality.TypeQuality
 
 /**
- * A value that can be watched. Calling [observe] returns the current value.
+ * Interface to an object which can contain a value or not
  *
  * @author  Jonathan Locke
  */
@@ -18,10 +18,15 @@ import io.kstar.annotations.quality.TypeQuality
     testing = TESTING_NOT_NEEDED,
     documentation = DOCUMENTED
 )
-fun interface Watchable<Value>
+interface Presence
 {
     /**
-     * Returns the observed value
+     * Returns true if this object's value is missing
      */
-    fun observe(): Value
+    val isAbsent: Boolean get() = !isPresent
+
+    /**
+     * Returns true if this object has a value
+     */
+    val isPresent: Boolean
 }

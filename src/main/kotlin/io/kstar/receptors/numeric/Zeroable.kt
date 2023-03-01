@@ -10,7 +10,7 @@ import io.kstar.annotations.quality.TypeQuality
 /**
  * Interface to an object that can logically be zero or non-zero.
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  */
 @TypeQuality
 (

@@ -11,7 +11,7 @@ import io.kstar.annotations.quality.Testing.TESTING_NOT_NEEDED
  * metric because there are many methods and even whole classes that do not need full testing. Some don't need testing
  * at all, for example, most interfaces.
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  * @see TypeQuality
  */
 @TypeQuality
@@ -19,7 +19,7 @@ import io.kstar.annotations.quality.Testing.TESTING_NOT_NEEDED
     stability = STABILITY_UNDETERMINED,
     testing = TESTING_NOT_NEEDED,
     documentation = DOCUMENTED,
-    reviewers = ["shibo"]
+    reviewers = ["Jonathan Locke"]
 )
 enum class Testing
 {

@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 /**
  * Interface to a JDK method that takes a duration and time unit.
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  */
 @TypeQuality
 (

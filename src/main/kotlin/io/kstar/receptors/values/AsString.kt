@@ -19,7 +19,7 @@ import java.util.*
  * [asString]. The object can override this method to provide multiple string representations for
  * specific purposes.
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  */
 @TypeQuality
 (

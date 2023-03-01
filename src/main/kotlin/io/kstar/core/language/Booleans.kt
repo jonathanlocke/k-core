@@ -14,7 +14,7 @@ import io.kstar.core.language.Objects.equalsAny
  *  - [isFalse]
  *  - [isTrue]
  *
- * @author jonathanl (shibo)
+ * @author  Jonathan Locke
  */
 @TypeQuality
 (
