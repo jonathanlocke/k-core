@@ -1,7 +1,8 @@
 @file:Suppress("unused")
 
-package io.kstar.core.io
+package io.kstar.core.io.output
 
+import io.kstar.core.io.output.NestedOutputStream.Companion.isBuffered
 import java.io.BufferedOutputStream
 import java.io.OutputStream
 
@@ -40,7 +41,7 @@ interface NestedOutputStream
             }
         }
     }
-    
+
     /**
      * Returns the nested output stream
      */

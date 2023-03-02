@@ -1,8 +1,8 @@
 @file:Suppress("unused")
 
-package io.kstar.core.io
+package io.kstar.core.io.input
 
-import io.kstar.core.io.NestedInputStream.Companion.isBuffered
+import io.kstar.core.io.input.NestedInputStream.Companion.isBuffered
 import java.io.BufferedInputStream
 import java.io.InputStream
 

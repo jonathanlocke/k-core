@@ -1,16 +1,16 @@
 @file:Suppress("MemberVisibilityCanBePrivate")
 
-package io.kstar.core.io
+package io.kstar.core.io.input
 
 import io.kstar.annotations.quality.Documentation.*
 import io.kstar.annotations.quality.Stability.*
 import io.kstar.annotations.quality.Testing.*
 import io.kstar.annotations.quality.TypeQuality
-import io.kstar.core.io.InputStreams.buffered
-import io.kstar.core.io.InputStreams.copyTo
-import io.kstar.core.io.InputStreams.copyToAndClose
-import io.kstar.core.io.NestedInputStream.Companion.isBuffered
-import io.kstar.core.io.OutputStreams.buffered
+import io.kstar.core.io.input.InputStreams.buffered
+import io.kstar.core.io.input.InputStreams.copyTo
+import io.kstar.core.io.input.InputStreams.copyToAndClose
+import io.kstar.core.io.input.NestedInputStream.Companion.isBuffered
+import io.kstar.core.io.output.OutputStreams.buffered
 import java.io.*
 
 /**
@@ -41,7 +41,7 @@ object InputStreams
      * stream is already buffered
      */
     fun InputStream.buffered(): InputStream = if (isBuffered()) this else BufferedInputStream(this)
-    
+
     /**
      * Copies an input stream to an output stream. The streams will be automatically buffered for efficiency
      * if they are not already buffered.

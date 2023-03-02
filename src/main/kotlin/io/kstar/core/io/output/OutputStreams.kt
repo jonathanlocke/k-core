@@ -1,14 +1,14 @@
 @file:Suppress("unused", "MemberVisibilityCanBePrivate")
 
-package io.kstar.core.io
+package io.kstar.core.io.output
 
 import io.kstar.annotations.quality.Documentation.DOCUMENTED
 import io.kstar.annotations.quality.Stability.STABLE_EXTENSIBLE
 import io.kstar.annotations.quality.Testing.UNTESTED
 import io.kstar.annotations.quality.TypeQuality
-import io.kstar.core.io.NestedOutputStream.Companion.isBuffered
-import io.kstar.core.io.OutputStreams.buffered
-import io.kstar.core.io.OutputStreams.tryToFlush
+import io.kstar.core.io.output.NestedOutputStream.Companion.isBuffered
+import io.kstar.core.io.output.OutputStreams.buffered
+import io.kstar.core.io.output.OutputStreams.tryToFlush
 import io.kstar.core.language.Try
 import java.io.BufferedOutputStream
 import java.io.OutputStream

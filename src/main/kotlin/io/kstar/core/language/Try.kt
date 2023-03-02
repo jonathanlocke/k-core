@@ -3,7 +3,6 @@
 package io.kstar.core.language
 
 import io.kstar.receptors.code.Code
-import java.lang.Runnable
 
 object Try
 {
@@ -21,6 +20,39 @@ object Try
         catch (e: Exception)
         {
             null
+        }
+    }
+
+    /**
+     * Runs the given [Code], always running the given [Runnable] afterwards
+     */
+    fun <T> tryFinally(code: Code<T>, after: Runnable): T
+    {
+        return try
+        {
+            code.run()
+        }
+        finally
+        {
+            after.run()
+        }
+    }
+
+    /**
+     * Attempts to run the given code. If the code throws an exception it is wrapped in a
+     * [RuntimeException], which is rethrown with the given message
+     *
+     * @return The return value of the code, or null
+     */
+    fun <T> tryCatchRethrow(code: Code<T>, message: String): T
+    {
+        return try
+        {
+            code.run()
+        }
+        catch (e: Exception)
+        {
+            throw RuntimeException(message, e)
         }
     }
 
