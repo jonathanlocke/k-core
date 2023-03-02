@@ -1,17 +1,17 @@
 @file:Suppress("unused")
 
-package io.kstar.receptors.values
+package io.kstar.receptors.strings
 
 import io.kstar.annotations.quality.Documentation.*
 import io.kstar.annotations.quality.Stability.*
 import io.kstar.annotations.quality.Testing.*
 import io.kstar.annotations.quality.TypeQuality
-import io.kstar.receptors.values.StringFormat.TO_STRING
+import io.kstar.receptors.strings.StringFormat.TO_STRING
 import java.util.*
 
 /**
  * Interface to an object that can produce one or more different kinds of string representations. This can be useful
- * when the [Object.toString] method is already being used or when other kinds of strings are needed for
+ * when the [toString] method is already being used or when other kinds of strings are needed for
  * specific purposes.
  *
  *
@@ -37,5 +37,3 @@ interface AsString
         return toString()
     }
 }
-
-

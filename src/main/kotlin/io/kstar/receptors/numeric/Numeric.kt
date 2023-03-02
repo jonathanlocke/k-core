@@ -31,6 +31,51 @@ interface Numeric<T : Numeric<T>> : Zeroable, Comparable<T>
         return onNew(value)
     }
 
+    /**
+     * Returns a sequence of the [Numeric] values from zero to this value, exclusive
+     */
+    fun asSequence(): Sequence<T>
+    {
+        return object : Iterator<T>
+        {
+            var at = 0L
+
+            override fun hasNext(): Boolean = at < asLong()
+            override fun next(): T = new(at++)
+
+        }.asSequence()
+    }
+
+    /**
+     * Returns a sequence of [Int] values from zero to [asInt], exclusive
+     */
+    fun asInts(): Sequence<Int>
+    {
+        return object : Iterator<Int>
+        {
+            var at = 0
+
+            override fun hasNext(): Boolean = at < asInt()
+            override fun next(): Int = at++
+
+        }.asSequence()
+    }
+
+    /**
+     * Returns a sequence of [Long] values from zero to [asInt], exclusive
+     */
+    fun asLongs(): Sequence<Long>
+    {
+        return object : Iterator<Long>
+        {
+            var at = 0L
+
+            override fun hasNext(): Boolean = at < asLong()
+            override fun next(): Long = at++
+
+        }.asSequence()
+    }
+
     override fun compareTo(other: T): Int = asLong().compareTo(other.asLong())
 
     fun onNew(value: Long): T

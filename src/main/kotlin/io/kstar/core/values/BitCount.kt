@@ -13,6 +13,7 @@ import java.lang.Long.numberOfLeadingZeros
  *
  * @author Jonathan Locke
  */
+@JvmInline
 value class BitCount(private val bits: Long) : Countable<BitCount>, Numeric<BitCount>
 {
     constructor(value: Int) : this(value.toLong())

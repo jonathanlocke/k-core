@@ -111,7 +111,7 @@ class BitDiagram(diagram: String)
     override fun toString(): String
     {
         val result = StringBuilder()
-        for (i in count(diagram.length).zeroToInts())
+        for (i in count(diagram.length).asInts())
         {
             result.append(diagram[i])
             if ((i + 1) % 8 == 0 && i + 1 < diagram.length)

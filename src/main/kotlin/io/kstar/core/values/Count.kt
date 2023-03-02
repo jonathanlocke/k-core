@@ -6,8 +6,8 @@ import io.kstar.core.language.Iterables.size
 import io.kstar.core.language.Iterators.size
 import io.kstar.receptors.numeric.CountRange
 import io.kstar.receptors.numeric.Countable
-import java.lang.Runnable
 
+@JvmInline
 value class Count(private val value: Long) : Countable<Count>
 {
     constructor(value: Int) : this(value.toLong())
@@ -32,7 +32,7 @@ value class Count(private val value: Long) : Countable<Count>
 
     fun loop(code: Runnable)
     {
-        zeroTo().forEach { _ -> code.run() }
+        asSequence().forEach { _ -> code.run() }
     }
 
     override fun count(): Count

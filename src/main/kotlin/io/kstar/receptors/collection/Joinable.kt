@@ -7,8 +7,8 @@ import io.kstar.annotations.quality.Stability.*
 import io.kstar.annotations.quality.Testing.*
 import io.kstar.annotations.quality.TypeQuality
 import io.kstar.core.language.Iterables.isEmpty
-import io.kstar.receptors.values.ValueToString
-import io.kstar.receptors.values.ValueToString.Companion.callToString
+import io.kstar.receptors.strings.ValueToString
+import io.kstar.receptors.strings.ValueToString.Companion.callToString
 import java.util.function.Function
 
 /**

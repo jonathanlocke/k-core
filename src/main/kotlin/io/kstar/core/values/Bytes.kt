@@ -9,9 +9,9 @@ import io.kstar.core.values.Bytes.Companion.megabytes
 import io.kstar.core.values.Bytes.Companion.petabytes
 import io.kstar.core.values.Bytes.Companion.terabytes
 import io.kstar.receptors.numeric.Countable
-import io.kstar.receptors.values.AsString
-import io.kstar.receptors.values.StringFormat
-import io.kstar.receptors.values.StringFormat.*
+import io.kstar.receptors.strings.AsString
+import io.kstar.receptors.strings.StringFormat
+import io.kstar.receptors.strings.StringFormat.*
 import java.util.regex.Pattern
 import java.util.regex.Pattern.compile
 import kotlin.Long.Companion.MAX_VALUE

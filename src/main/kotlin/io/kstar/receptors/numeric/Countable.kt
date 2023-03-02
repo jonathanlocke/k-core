@@ -24,40 +24,4 @@ import io.kstar.core.values.Count
 interface Countable<T : Countable<T>> : Numeric<T>
 {
     fun count(): Count = Count(asLong())
-
-    fun zeroTo(): Sequence<T>
-    {
-        return object : Iterator<T>
-        {
-            var at = 0L
-
-            override fun hasNext(): Boolean = at < asLong()
-            override fun next(): T = new(at++)
-
-        }.asSequence()
-    }
-
-    fun zeroToInts(): Sequence<Int>
-    {
-        return object : Iterator<Int>
-        {
-            var at = 0
-
-            override fun hasNext(): Boolean = at < asInt()
-            override fun next(): Int = at++
-
-        }.asSequence()
-    }
-
-    fun zeroToLongs(): Sequence<Long>
-    {
-        return object : Iterator<Long>
-        {
-            var at = 0L
-
-            override fun hasNext(): Boolean = at < asLong()
-            override fun next(): Long = at++
-
-        }.asSequence()
-    }
 }

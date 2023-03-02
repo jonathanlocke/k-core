@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package io.kstar.receptors.values
+package io.kstar.receptors.strings
 
 fun interface ValueToString<Value>
 {

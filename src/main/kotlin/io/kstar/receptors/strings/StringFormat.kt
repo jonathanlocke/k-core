@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package io.kstar.receptors.values
+package io.kstar.receptors.strings
 
 import io.kstar.annotations.quality.Documentation
 import io.kstar.annotations.quality.Stability
