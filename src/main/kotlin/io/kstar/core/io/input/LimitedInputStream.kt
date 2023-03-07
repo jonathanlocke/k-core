@@ -14,7 +14,7 @@ import java.io.InputStream
  * An input stream that limits reading to a given number of bytes. This can be useful in defending against certain kinds
  * of attacks.
  *
- * @author jonathanl (shibo)
+ * @author Jonathan Locke
  */
 class LimitedInputStream
 (

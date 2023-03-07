@@ -14,7 +14,7 @@ import java.io.Reader
  * A simple stream that allows you to peek at what is coming next in an input stream, with [lookAhead]. The
  * current line number can also be retrieved with [lineNumber].
  *
- * @author jonathanl (shibo)
+ * @author Jonathan Locke
  */
 @TypeQuality
 (
@@ -47,7 +47,7 @@ class LookAheadReader
     init
     {
         next()
-        
+
         if (hasNext())
         {
             next()

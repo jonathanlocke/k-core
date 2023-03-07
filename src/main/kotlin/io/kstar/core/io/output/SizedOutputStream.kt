@@ -16,7 +16,7 @@ import java.io.OutputStream
  * An output stream that keeps track of how many bytes have been written. The number of bytes written is available
  * via [bytes].
  *
- * @author jonathanl (shibo)
+ * @author Jonathan Locke
  */
 @TypeQuality
 (

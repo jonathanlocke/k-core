@@ -10,7 +10,7 @@ import io.kstar.annotations.quality.TypeQuality
 /**
  * Listens to a model for changes in its internal state.
  *
- * @author jonathanl (shibo)
+ * @author Jonathan Locke
  */
 @TypeQuality
 (
