@@ -2,7 +2,11 @@
 
 package io.kstar.receptors.numeric
 
-import io.kstar.core.language.Doubles.inRange
+import io.kstar.core.language.Longs.inRange
+import io.kstar.receptors.numeric.IntegerNumeric.Companion.div
+import io.kstar.receptors.numeric.IntegerNumeric.Companion.minus
+import io.kstar.receptors.numeric.IntegerNumeric.Companion.plus
+import io.kstar.receptors.numeric.IntegerNumeric.Companion.times
 import io.kstar.receptors.numeric.Numeric.Companion.div
 import io.kstar.receptors.numeric.Numeric.Companion.minus
 import io.kstar.receptors.numeric.Numeric.Companion.plus
@@ -32,7 +36,6 @@ import kotlin.math.min
  *
  *  * [incremented]
  *  * [decremented]
- *  * [reciprocal]
  *
  * **Tests**
  *
@@ -69,18 +72,18 @@ import kotlin.math.min
  *
  * @author Jonathan Locke
  */
-interface Numeric<Value : Numeric<Value>> :
-    ScalarValueFactory<Double, Value>,
+interface IntegerNumeric<Value : IntegerNumeric<Value>> :
+    ScalarValueFactory<Long, Value>,
     Zeroable,
     Comparable<Value>
 {
-    fun asDouble(): Double
+    fun asLong(): Long
 
     fun asByte(): Byte = asLong().toByte()
     fun asChar(): Char = asInt().toChar()
+    fun asDouble(): Double = asLong().toDouble()
     fun asFloat(): Float = asDouble().toFloat()
     fun asInt(): Int = asLong().toInt()
-    fun asLong(): Long = asDouble().toLong()
     fun asShort(): Short = asLong().toShort()
     fun asUInt(): UInt = asLong().toUInt()
     fun asULong(): ULong = asLong().toULong()
@@ -88,13 +91,13 @@ interface Numeric<Value : Numeric<Value>> :
     fun maximum(): Value
     fun minimum(): Value
 
-    override fun isValidScalar(scalar: Double): Boolean
+    override fun isValidScalar(scalar: Long): Boolean
     {
-        return scalar in minimum().asDouble()..maximum().asDouble()
+        return scalar in minimum().asLong()..maximum().asLong()
     }
 
     /**
-     * Returns a sequence of the [Numeric] values from zero to this value, exclusive
+     * Returns a sequence of the [IntegerNumeric] values from zero to this value, exclusive
      */
     fun asSequence(): Sequence<Value>
     {
@@ -138,49 +141,39 @@ interface Numeric<Value : Numeric<Value>> :
         }.asSequence()
     }
 
-    override fun compareTo(other: Value): Int = asDouble().compareTo(other.asDouble())
+    override fun compareTo(other: Value): Int = asLong().compareTo(other.asLong())
 
-    fun maximum(that: Numeric<*>): Value = new(max(asDouble(), that.asDouble()))
-    fun minimum(that: Numeric<*>): Value = new(min(asDouble(), that.asDouble()))
-
-    fun new(scalar: Long): Value = super.new(scalar.toDouble())
-
-    fun reciprocal(): Value = new(1.0 / asDouble())
+    fun maximum(that: IntegerNumeric<*>): Value = new(max(asLong(), that.asLong()))
+    fun minimum(that: IntegerNumeric<*>): Value = new(min(asLong(), that.asLong()))
 
     fun decremented() = new(asLong() - 1)
     fun incremented() = new(asLong() + 1)
 
     fun inRange(minimum: Value, maximum: Value): Value
     {
-        return new(asDouble().inRange(minimum.asDouble()..maximum.asDouble()))
+        return new(asLong().inRange(minimum.asLong()..maximum.asLong()))
     }
 
     override fun isZero(): Boolean = asLong() == 0L
 
     companion object
     {
-        operator fun <N : Numeric<N>> N.plus(that: Numeric<*>): N = new(asDouble() + that.asDouble())
-        operator fun <N : Numeric<N>> N.minus(that: Numeric<*>): N = new(asDouble() - that.asDouble())
-        operator fun <N : Numeric<N>> N.times(that: Numeric<*>): N = new(asDouble() * that.asDouble())
-        operator fun <N : Numeric<N>> N.div(that: Numeric<*>): N = new(asDouble() / that.asDouble())
-        operator fun <N : Numeric<N>> N.compareTo(that: Numeric<*>) = asDouble().compareTo(that.asDouble())
+        operator fun <N : IntegerNumeric<N>> N.plus(that: IntegerNumeric<*>): N = new(asLong() + that.asLong())
+        operator fun <N : IntegerNumeric<N>> N.minus(that: IntegerNumeric<*>): N = new(asLong() - that.asLong())
+        operator fun <N : IntegerNumeric<N>> N.times(that: IntegerNumeric<*>): N = new(asLong() * that.asLong())
+        operator fun <N : IntegerNumeric<N>> N.div(that: IntegerNumeric<*>): N = new(asLong() / that.asLong())
+        operator fun <N : IntegerNumeric<N>> N.compareTo(that: IntegerNumeric<*>) = asLong().compareTo(that.asLong())
 
-        operator fun <N : Numeric<N>> N.plus(that: Double): N = new(asDouble() + that)
-        operator fun <N : Numeric<N>> N.minus(that: Double): N = new(asDouble() - that)
-        operator fun <N : Numeric<N>> N.times(that: Double): N = new(asDouble() * that)
-        operator fun <N : Numeric<N>> N.div(that: Double): N = new(asDouble() / that)
-        operator fun <N : Numeric<N>> N.compareTo(that: Double) = asDouble().compareTo(that)
+        operator fun <N : IntegerNumeric<N>> N.plus(that: Long): N = new(asLong() + that)
+        operator fun <N : IntegerNumeric<N>> N.minus(that: Long): N = new(asLong() - that)
+        operator fun <N : IntegerNumeric<N>> N.times(that: Long): N = new(asLong() * that)
+        operator fun <N : IntegerNumeric<N>> N.div(that: Long): N = new(asLong() / that)
+        operator fun <N : IntegerNumeric<N>> N.compareTo(that: Long) = asLong().compareTo(that)
 
-        operator fun <N : Numeric<N>> N.plus(that: Long): N = new(asDouble() + that)
-        operator fun <N : Numeric<N>> N.minus(that: Long): N = new(asDouble() - that)
-        operator fun <N : Numeric<N>> N.times(that: Long): N = new(asDouble() * that)
-        operator fun <N : Numeric<N>> N.div(that: Long): N = new(asDouble() / that)
-        operator fun <N : Numeric<N>> N.compareTo(that: Long) = asDouble().compareTo(that)
-
-        operator fun <N : Numeric<N>> N.plus(that: Int): N = new(asDouble() + that)
-        operator fun <N : Numeric<N>> N.minus(that: Int): N = new(asDouble() - that)
-        operator fun <N : Numeric<N>> N.times(that: Int): N = new(asDouble() * that)
-        operator fun <N : Numeric<N>> N.div(that: Int): N = new(asDouble() / that)
-        operator fun <N : Numeric<N>> N.compareTo(that: Int) = asDouble().compareTo(that)
+        operator fun <N : IntegerNumeric<N>> N.plus(that: Int): N = new(asLong() + that)
+        operator fun <N : IntegerNumeric<N>> N.minus(that: Int): N = new(asLong() - that)
+        operator fun <N : IntegerNumeric<N>> N.times(that: Int): N = new(asLong() * that)
+        operator fun <N : IntegerNumeric<N>> N.div(that: Int): N = new(asLong() / that)
+        operator fun <N : IntegerNumeric<N>> N.compareTo(that: Int) = asLong().compareTo(that)
     }
 }

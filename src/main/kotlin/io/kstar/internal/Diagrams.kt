@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package io.kstar.core.internal
+package io.kstar.internal
 
 import io.kstar.annotations.documentation.UmlDiagramIdentifier
 

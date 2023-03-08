@@ -3,9 +3,9 @@ package io.kstar.core.messaging
 import io.kstar.annotations.documentation.UmlIncludeType
 import io.kstar.annotations.documentation.UmlNote
 import io.kstar.annotations.documentation.UmlRelation
-import io.kstar.core.internal.Diagrams.DiagramBroadcaster
-import io.kstar.core.internal.Diagrams.DiagramListener
-import io.kstar.core.internal.Diagrams.DiagramLogging
+import io.kstar.internal.Diagrams.DiagramBroadcaster
+import io.kstar.internal.Diagrams.DiagramListener
+import io.kstar.internal.Diagrams.DiagramLogging
 import io.kstar.receptors.values.Named
 
 /**

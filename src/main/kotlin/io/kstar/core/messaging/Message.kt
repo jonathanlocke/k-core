@@ -4,11 +4,11 @@ import com.telenav.kivakit.annotations.code.quality.TypeQuality
 import io.kstar.annotations.documentation.UmlIncludeRelatedType
 import io.kstar.annotations.documentation.UmlIncludeType
 import io.kstar.annotations.documentation.UmlRelation
-import io.kstar.core.internal.Diagrams.DiagramBroadcaster
-import io.kstar.core.internal.Diagrams.DiagramListener
-import io.kstar.core.internal.Diagrams.DiagramMessaging
 import io.kstar.core.messaging.Message.OperationStatus
 import io.kstar.core.messaging.Message.Status
+import io.kstar.internal.Diagrams.DiagramBroadcaster
+import io.kstar.internal.Diagrams.DiagramListener
+import io.kstar.internal.Diagrams.DiagramMessaging
 
 /**
  * An interface to retrieve the basic attributes of a message, find out what it means and format it as text. A message's

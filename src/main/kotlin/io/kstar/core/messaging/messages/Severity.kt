@@ -1,6 +1,15 @@
 package io.kstar.core.messaging.messages
 
-import com.telenav.kivakit.annotations.code.quality.TypeQuality
+import io.kstar.annotations.documentation.UmlIncludeType
+import io.kstar.annotations.quality.Documentation.*
+import io.kstar.annotations.quality.Stability.*
+import io.kstar.annotations.quality.Testing.*
+import io.kstar.annotations.quality.TypeQuality
+import io.kstar.core.messaging.Listener
+import io.kstar.core.values.level.Level
+import io.kstar.internal.Diagrams
+import io.kstar.receptors.values.Named
+
 
 /**
  * Represents the severity of the current state of an operation or a step in an operation.
@@ -8,11 +17,16 @@ import com.telenav.kivakit.annotations.code.quality.TypeQuality
  * @author Jonathan Locke
  */
 @Suppress("unused")
-@UmlIncludeType(diagram = DiagramMessaging::class)
-@TypeQuality(stability = STABLE_EXTENSIBLE, testing = TESTING_NOT_NEEDED, documentation = DOCUMENTED)
+@UmlIncludeType(inDiagrams = [Diagrams.DiagramMessaging::class])
+@TypeQuality
+(
+    stability = STABLE_EXTENSIBLE,
+    testing = TESTING_NOT_NEEDED,
+    documentation = DOCUMENTED
+)
 class Severity : Level, Named
 {
-    private var name: String? = null
+    private var name: String
 
     constructor(name: String?, severity: Double) : super(severity)
     {
@@ -26,7 +40,7 @@ class Severity : Level, Named
     /**
      * {@inheritDoc}
      */
-    fun name(): String?
+    fun name(): String
     {
         return name
     }
@@ -36,7 +50,7 @@ class Severity : Level, Named
      */
     override fun toString(): String
     {
-        return name!!
+        return name
     }
 
     companion object

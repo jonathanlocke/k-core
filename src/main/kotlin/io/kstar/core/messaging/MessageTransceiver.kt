@@ -1,6 +1,13 @@
 package io.kstar.core.messaging
 
-import com.telenav.kivakit.annotations.code.quality.TypeQuality
+import io.kstar.annotations.quality.Documentation.*
+import io.kstar.annotations.quality.Stability.STABLE_EXTENSIBLE
+import io.kstar.annotations.quality.Testing.*
+import io.kstar.annotations.quality.TypeQuality
+import io.kstar.core.messaging.Debug.Companion.registerDebug
+import io.kstar.core.messaging.context.CodeContext
+import io.kstar.core.messaging.messages.status.Announcement
+import io.kstar.core.messaging.messages.status.FatalProblem
 
 /**
  * Methods that transmit different kinds of messages.
@@ -8,7 +15,12 @@ import com.telenav.kivakit.annotations.code.quality.TypeQuality
  * @author Jonathan Locke
  */
 @Suppress("unused")
-@TypeQuality(stability = STABLE_EXTENSIBLE, testing = TESTING_NOT_NEEDED, documentation = DOCUMENTED)
+@TypeQuality
+(
+    stability = STABLE_EXTENSIBLE,
+    testing = TESTING_NOT_NEEDED,
+    documentation = DOCUMENTED
+)
 interface MessageTransceiver : Transceiver
 {
     /**
@@ -70,7 +82,7 @@ interface MessageTransceiver : Transceiver
      */
     fun <T> fatal(text: String?, vararg arguments: Any?): T?
     {
-        val problem: `var` = FatalProblem(text, arguments)
+        val problem = FatalProblem(text, arguments)
         transmit(problem)
         problem.throwMessage()
         return null

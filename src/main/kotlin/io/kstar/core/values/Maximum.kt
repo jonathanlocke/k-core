@@ -16,5 +16,8 @@ value class Maximum(private val value: Long) : Countable<Maximum>
 
     override fun asLong(): Long = value
 
-    override fun onNew(value: Long): Maximum = Maximum(value)
+    override fun maximum(): Maximum = Maximum(Long.MAX_VALUE)
+    override fun minimum(): Maximum = Maximum(Long.MIN_VALUE)
+
+    override fun onNew(scalar: Long): Maximum = Maximum(scalar)
 }

@@ -2,11 +2,9 @@
 
 package io.kstar.core.language
 
-object Doubles
+object Longs
 {
-    fun Double.format(digits: Int): String = java.lang.String.format("%.${digits}f", this)
-
-    fun Double.inRange(range: ClosedRange<Double>): Double
+    fun Long.inRange(range: ClosedRange<Long>): Long
     {
         if (this < range.start) return range.start
         if (this > range.endInclusive) return range.endInclusive

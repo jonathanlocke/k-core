@@ -2,7 +2,7 @@ package io.kstar.core.messaging
 
 import io.kstar.annotations.documentation.UmlIncludeType
 import io.kstar.annotations.documentation.UmlRelation
-import io.kstar.core.internal.Diagrams.DiagramMessaging
+import io.kstar.internal.Diagrams.DiagramMessaging
 
 
 /**

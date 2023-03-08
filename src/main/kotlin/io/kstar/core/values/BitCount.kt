@@ -4,8 +4,7 @@ package io.kstar.core.values
 
 import io.kstar.core.values.bits.Bits.parseBits
 import io.kstar.receptors.numeric.Countable
-import io.kstar.receptors.numeric.Numeric
-import io.kstar.receptors.numeric.Numeric.Companion.minus
+import io.kstar.receptors.numeric.IntegerNumeric.Companion.minus
 import java.lang.Long.numberOfLeadingZeros
 
 /**
@@ -14,7 +13,7 @@ import java.lang.Long.numberOfLeadingZeros
  * @author Jonathan Locke
  */
 @JvmInline
-value class BitCount(private val bits: Long) : Countable<BitCount>, Numeric<BitCount>
+value class BitCount(private val bits: Long) : Countable<BitCount>
 {
     constructor(value: Int) : this(value.toLong())
 
@@ -35,9 +34,10 @@ value class BitCount(private val bits: Long) : Countable<BitCount>, Numeric<BitC
         }
     }
 
-    override fun onNew(value: Long): BitCount = bits(value.toInt())
+    override fun maximum(): BitCount = BitCount(Long.MAX_VALUE)
+    override fun minimum(): BitCount = BitCount(Long.MIN_VALUE)
 
-    override fun maximum(): Long = 128
+    override fun onNew(scalar: Long): BitCount = BitCount(scalar)
 
     override fun asLong(): Long = bits
 

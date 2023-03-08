@@ -42,5 +42,8 @@ value class Count(private val value: Long) : Countable<Count>
 
     override fun asLong(): Long = value
 
-    override fun onNew(value: Long): Count = Count(value)
+    override fun maximum(): Count = Count(Long.MAX_VALUE)
+    override fun minimum(): Count = Count(Long.MIN_VALUE)
+
+    override fun onNew(scalar: Long): Count = Count(scalar)
 }

@@ -11,7 +11,7 @@ object Try
      *
      * @return The return value of the code, or null
      */
-    fun <T> tryCatch(code: Code<T>): T?
+    fun <T> tryOrNull(code: Code<T>): T?
     {
         return try
         {
@@ -44,7 +44,7 @@ object Try
      *
      * @return The return value of the code, or null
      */
-    fun <T> tryCatchRethrow(code: Code<T>, message: String): T
+    fun <T> tryRethrow(code: Code<T>, message: String): T
     {
         return try
         {
@@ -61,7 +61,7 @@ object Try
      *
      * @return The return value of the code, or null
      */
-    fun <T> tryCatchOr(code: Code<T>, default: T): T
+    fun <T> tryOr(code: Code<T>, default: T): T
     {
         return try
         {
@@ -70,6 +70,24 @@ object Try
         catch (e: Exception)
         {
             default
+        }
+    }
+
+    /**
+     * Attempts to run the given code, returning null if an exception is thrown or if the
+     * code returns null
+     *
+     * @return The return value of the code, or null
+     */
+    fun <T> tryOr(code: Code<T?>, default: Code<T>): T
+    {
+        return try
+        {
+            return code.run() ?: default.run()
+        }
+        catch (e: Exception)
+        {
+            default.run()
         }
     }
 

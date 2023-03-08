@@ -127,10 +127,10 @@ class Bytes(val bytes: Long) : Countable<Bytes>, AsString
         }
     }
 
-    override fun onNew(value: Long): Bytes = bytes(value)
+    override fun maximum(): Bytes = Bytes(MAX_VALUE)
+    override fun minimum(): Bytes = Bytes(Long.MIN_VALUE)
 
-    override fun maximum(): Long = 0
-    override fun minimum(): Long = MAX_VALUE
+    override fun onNew(scalar: Long): Bytes = Bytes(scalar)
 
     override fun asLong(): Long = bytes
     override fun asDouble(): Double = bytes.toDouble()

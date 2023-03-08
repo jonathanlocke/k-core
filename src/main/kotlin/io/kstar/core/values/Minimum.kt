@@ -16,5 +16,8 @@ value class Minimum(private val value: Long) : Countable<Minimum>
 
     override fun asLong(): Long = value
 
-    override fun onNew(value: Long): Minimum = Minimum(value)
+    override fun maximum(): Minimum = Minimum(Long.MAX_VALUE)
+    override fun minimum(): Minimum = Minimum(Long.MIN_VALUE)
+
+    override fun onNew(scalar: Long): Minimum = Minimum(scalar)
 }

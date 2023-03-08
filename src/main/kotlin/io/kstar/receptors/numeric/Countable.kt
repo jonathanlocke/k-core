@@ -21,7 +21,7 @@ import io.kstar.core.values.Count
     testing = UNTESTED,
     documentation = DOCUMENTED
 )
-interface Countable<T : Countable<T>> : Numeric<T>
+interface Countable<T : Countable<T>> : IntegerNumeric<T>
 {
     fun count(): Count = Count(asLong())
 }

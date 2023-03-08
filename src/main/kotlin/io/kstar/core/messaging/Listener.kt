@@ -1,6 +1,14 @@
 package io.kstar.core.messaging
 
-import com.telenav.kivakit.annotations.code.quality.TypeQuality
+import io.kstar.annotations.documentation.UmlIncludeType
+import io.kstar.annotations.quality.Documentation.DOCUMENTED
+import io.kstar.annotations.quality.Stability.*
+import io.kstar.annotations.quality.Testing.*
+import io.kstar.annotations.quality.TypeQuality
+import io.kstar.internal.Diagrams.DiagramBroadcaster
+import io.kstar.internal.Diagrams.DiagramListener
+import io.kstar.internal.Diagrams.DiagramRepeater
+
 
 /**
  * Handles messages through [.onMessage].
@@ -72,26 +80,29 @@ import com.telenav.kivakit.annotations.code.quality.TypeQuality
  *
  * &nbsp;&nbsp;&nbsp;&nbsp;**EmployeeLoader ==> PayrollProcessor ==> Logger**
  *
+ * See:
+ *
+ *  * [State of the Art](https://state-of-the-art.org/broadcaster)
  *
  * @author Jonathan Locke
  * @see Broadcaster
- *
- * @see [State
-](https://state-of-the-art.org.broadcaster) */
-@UmlIncludeType(diagram = DiagramBroadcaster::class)
-@UmlIncludeType(diagram = DiagramRepeater::class)
-@UmlIncludeType(diagram = DiagramListener::class)
-@UmlExcludeSuperTypes([NamedObject::class])
-@FunctionalInterface
-@TypeQuality(stability = STABLE_EXTENSIBLE, testing = UNTESTED, documentation = DOCUMENTED)
-interface Listener : MessageTransceiver
+ */
+@UmlIncludeType(inDiagrams = [DiagramBroadcaster::class, DiagramRepeater::class, DiagramListener::class])
+@TypeQuality
+(
+    stability = STABLE_EXTENSIBLE,
+    testing = UNTESTED,
+    documentation = DOCUMENTED
+)
+fun interface Listener : MessageTransceiver
 {
-    @get:UmlExcludeMember
-    val isDeaf: Boolean
-        /**
-         * Returns true if this listener doesn't do anything with the messages it gets
-         */
-        get() = false
+    /**
+     * Returns true if this listener doesn't do anything with the messages it gets
+     */
+    fun isDeaf(): Boolean
+    {
+        return false
+    }
 
     /**
      * Registers this listener with the given broadcaster in being interested in transmitted messages
@@ -100,7 +111,7 @@ interface Listener : MessageTransceiver
      * @param filter The message filter to apply
      * @return The broadcaster
      */
-    fun <T : Broadcaster?> listenTo(broadcaster: T, filter: MessageFilter?): T
+    fun <T : Broadcaster?> listenTo(broadcaster: T, filter: MessageFilter): T
     {
         broadcaster!!.addListener(this, filter)
         return broadcaster
@@ -112,7 +123,7 @@ interface Listener : MessageTransceiver
      * @param broadcaster The broadcaster that should send to this listener
      * @return The broadcaster
      */
-    fun <T : Broadcaster?> listenTo(broadcaster: T?): T?
+    fun <T : Broadcaster?> listenTo(broadcaster: T): T
     {
         broadcaster?.addListener(this) ?: warning("Null broadcaster")
         return broadcaster
@@ -128,12 +139,11 @@ interface Listener : MessageTransceiver
     /**
      * **Not public API**
      */
-    @UmlExcludeMember
-    override fun onReceive(transmittable: Transmittable?)
+    override fun onReceive(message: Transmittable)
     {
-        if (transmittable is Message)
+        if (message is Message)
         {
-            onMessage(transmittable as Message?)
+            onMessage(message)
         }
     }
 
@@ -142,7 +152,7 @@ interface Listener : MessageTransceiver
         /**
          * Returns a listener that writes the messages it hears to the console
          */
-        fun consoleListener(): Listener?
+        fun consoleListener(): Listener
         {
             return console()
         }
@@ -150,15 +160,18 @@ interface Listener : MessageTransceiver
         /**
          * Returns a listener that does nothing with messages. Useful only when you want to discard output from something
          */
-        fun nullListener(): Listener?
+        fun nullListener(): Listener
         {
-            return Listener { ignored: Message? -> }
+            return object Listener()
+            {
+
+            }
         }
 
         /**
          * Returns a listener that throws exceptions
          */
-        fun throwingListener(): Listener?
+        fun throwingListener(): Listener
         {
             return ThrowingListener()
         }

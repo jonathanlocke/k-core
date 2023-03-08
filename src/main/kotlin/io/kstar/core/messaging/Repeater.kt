@@ -5,7 +5,7 @@ import io.kstar.annotations.quality.Documentation.*
 import io.kstar.annotations.quality.Stability.*
 import io.kstar.annotations.quality.Testing.*
 import io.kstar.annotations.quality.TypeQuality
-import io.kstar.core.internal.Diagrams.DiagramRepeater
+import io.kstar.internal.Diagrams.DiagramRepeater
 import javax.sound.midi.Receiver
 
 /**
@@ -57,7 +57,7 @@ import javax.sound.midi.Receiver
  *
  * @see Listener
  */
-@UmlIncludeType(DiagramRepeater::class)
+@UmlIncludeType(inDiagrams = [DiagramRepeater::class])
 @TypeQuality
 (
     stability = STABLE_EXTENSIBLE,
@@ -83,8 +83,7 @@ interface Repeater : Listener, Broadcaster, Receiver
     /**
      * Handles any received messages by re-broadcasting them
      */
-    @MustBeInvokedByOverriders
-    override fun onReceive(message: Transmittable?)
+    override fun onReceive(message: Transmittable)
     {
         if (isRepeating)
         {

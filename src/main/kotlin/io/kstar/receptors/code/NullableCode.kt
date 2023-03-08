@@ -9,8 +9,7 @@ import io.kstar.annotations.quality.TypeQuality
 import io.kstar.core.language.Try.tryOr
 
 /**
- * Code that can be executed, returning a value (and not throwing an exception), as opposed to [java.lang.Runnable],
- * which does not return a value.
+ * Code that can be executed, returning a nullable value
  *
  * @author  Jonathan Locke
  */
@@ -21,22 +20,22 @@ import io.kstar.core.language.Try.tryOr
     documentation = DOCUMENTED,
     reviewers = ["Jonathan Locke"]
 )
-fun interface Code<Value>
+fun interface NullableCode<Value>
 {
     /**
      * Returns the value returned by the code
      */
-    fun run(): Value
+    fun run(): Value?
 
     /**
-     * Returns the result of running this code, or if it throws an exception,
-     * the result of running the given default code
+     * Returns the result of running this code. If the code throws an exception or returns null,
+     * the return value is the result of running given default code
      */
-    fun runOr(default: Code<Value>): Value = tryOr({ run() }) { default.run() }
+    fun runOr(default: NullableCode<Value?>): Value? = tryOr({ run() ?: default.run() }, default::run)
 
     /**
-     * Returns the result of running this code, or if it throws an exception,
-     * the default value
+     * Returns the result of running this code. If the code throws an exception or returns null,
+     * the given default value is returned
      */
     fun runOr(default: Value): Value = tryOr({ run() }) { default }
 }
