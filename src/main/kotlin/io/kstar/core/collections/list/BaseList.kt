@@ -571,7 +571,7 @@ abstract class BaseList<Value> protected constructor(maximumSize: Maximum, list:
      */
     open fun reversed(): BaseList<Value>?
     {
-        val copy: `var` = copy()
+        val copy = copy()
         copy.reverse()
         return copy
     }
@@ -669,7 +669,7 @@ abstract class BaseList<Value> protected constructor(maximumSize: Maximum, list:
     @Suppress("SpellCheckingInspection")
     open fun uniqued(): BaseList<Value>?
     {
-        val list: `var` = newList()
+        val list = newList()
         list.addAll(asSet())
         return list
     }

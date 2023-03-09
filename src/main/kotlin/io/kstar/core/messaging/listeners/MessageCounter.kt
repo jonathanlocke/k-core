@@ -140,7 +140,7 @@ interface MessageCounter : Listener
      */
     fun statistics(vararg statuses: Message.Status?): StringList?
     {
-        val statistics: `var` = StringList()
+        val statistics = StringList()
         for (status in statuses)
         {
             statistics.append(rightAlign(status.name(), 24, ' '))
@@ -158,10 +158,10 @@ interface MessageCounter : Listener
      */
     fun statistics(vararg types: Class<out Message?>?): StringList?
     {
-        val statistics: `var` = StringList()
+        val statistics = StringList()
         for (type in types)
         {
-            val count: `var` = count(type)
+            val count = count(type)
             if (count != null)
             {
                 statistics.append(rightAlign(pluralizeEnglish(simpleName(type)), 24, ' ')

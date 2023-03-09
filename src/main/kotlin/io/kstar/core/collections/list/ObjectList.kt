@@ -191,10 +191,10 @@ open class ObjectList<Value> : BaseList<Value>
      */
     fun partition(partitions: Count): ObjectList<ObjectList<Value>>
     {
-        val lists: `var` = ObjectList<ObjectList<Value>>(maximumSize())
-        var i: `var` = 0
-        var list: `var` = -1
-        val every: `var` = Math.round(size.toDouble() / partitions.asInt() as Double).toInt()
+        val lists = ObjectList<ObjectList<Value>>(maximumSize())
+        var i = 0
+        var list = -1
+        val every = Math.round(size.toDouble() / partitions.asInt() as Double).toInt()
         for (`object` in this)
         {
             if (i++ % every == 0 && list < partitions.asInt() - 1)
@@ -334,7 +334,7 @@ open class ObjectList<Value> : BaseList<Value>
          */
         fun <T> list(maximumSize: Maximum?, values: Iterable<T>?): ObjectList<T>
         {
-            val list: `var` = ObjectList<T>(maximumSize)
+            val list = ObjectList<T>(maximumSize)
             list.appendAll(values)
             return list
         }
@@ -352,7 +352,7 @@ open class ObjectList<Value> : BaseList<Value>
          */
         fun <T> list(maximumSize: Maximum?, values: Iterator<T>?): ObjectList<T>
         {
-            val list: `var` = ObjectList<T>()
+            val list = ObjectList<T>()
             list.appendAll(values)
             return list
         }
@@ -362,7 +362,7 @@ open class ObjectList<Value> : BaseList<Value>
          */
         fun <T> list(values: Iterable<T>?): ObjectList<T>
         {
-            val list: `var` = ObjectList<T>()
+            val list = ObjectList<T>()
             list.appendAll(values)
             return list
         }
@@ -380,7 +380,7 @@ open class ObjectList<Value> : BaseList<Value>
          */
         fun <T> list(values: Iterator<T>?): ObjectList<T>
         {
-            val list: `var` = ObjectList<T>()
+            val list = ObjectList<T>()
             list.appendAll(values)
             return list
         }
@@ -391,7 +391,7 @@ open class ObjectList<Value> : BaseList<Value>
         @SafeVarargs
         fun <T> list(maximumSize: Maximum?, vararg objects: T): ObjectList<T>
         {
-            val list: `var` = ObjectList<T>(maximumSize)
+            val list = ObjectList<T>(maximumSize)
             list.addAll(objects)
             return list
         }
@@ -409,7 +409,7 @@ open class ObjectList<Value> : BaseList<Value>
 
         fun <T> listFromArray(objects: Array<T>?): ObjectList<T>
         {
-            val list: `var` = ObjectList<T>()
+            val list = ObjectList<T>()
             list.addAll(objects)
             return list
         }
@@ -419,7 +419,7 @@ open class ObjectList<Value> : BaseList<Value>
          */
         fun <T> listFromInts(factory: IntMapper<T>, vararg values: Int): ObjectList<T>
         {
-            val objects: `var` = ObjectList<T>()
+            val objects = ObjectList<T>()
             for (value in values)
             {
                 objects.add(factory.map(value))
@@ -432,7 +432,7 @@ open class ObjectList<Value> : BaseList<Value>
          */
         fun listFromLongs(objects: LongArray): ObjectList<Long>
         {
-            val list: `var` = ObjectList<Long>()
+            val list = ObjectList<Long>()
             for (at in objects)
             {
                 list.add(at)
@@ -445,7 +445,7 @@ open class ObjectList<Value> : BaseList<Value>
          */
         fun <T> listFromLongs(factory: LongMapper<T>, values: Iterable<LongValued?>): ObjectList<T>
         {
-            val objects: `var` = ObjectList<T>()
+            val objects = ObjectList<T>()
             for (value in values)
             {
                 objects.add(factory.map(value.longValue()))
@@ -458,7 +458,7 @@ open class ObjectList<Value> : BaseList<Value>
          */
         fun <T> listFromLongs(factory: LongMapper<T>, vararg values: Long): ObjectList<T>
         {
-            val objects: `var` = ObjectList<T>()
+            val objects = ObjectList<T>()
             for (value in values)
             {
                 objects.add(factory.map(value))

@@ -26,7 +26,7 @@ open class StringMap<Value> : BaseStringMap<Value>
      */
     open fun copy(): StringMap<Value>?
     {
-        val copy: `var` = StringMap<Value>()
+        val copy = StringMap<Value>()
         copy.putAll(this)
         return copy
     }
@@ -83,7 +83,7 @@ open class StringMap<Value> : BaseStringMap<Value>
 
     fun withKeyCaseSensitivity(keyCaseSensitivity: KeyCaseSensitivity): StringMap<Value>
     {
-        val copy: `var` = copy()
+        val copy = copy()
         copy.keyCaseSensitivity = keyCaseSensitivity
         return copy
     }

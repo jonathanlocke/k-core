@@ -1,6 +1,12 @@
 package io.kstar.core.collections.list
 
-import com.telenav.kivakit.annotations.code.quality.TypeQuality
+import io.kstar.annotations.documentation.UmlIncludeType
+import io.kstar.annotations.quality.Documentation.DOCUMENTED
+import io.kstar.annotations.quality.Stability.STABLE_EXTENSIBLE
+import io.kstar.annotations.quality.Testing.TESTING_INSUFFICIENT
+import io.kstar.annotations.quality.TypeQuality
+import io.kstar.core.values.Maximum
+import io.kstar.internal.Diagrams.DiagramCollections
 
 /**
  * [ObjectList] already contains push and pop functionality, but this class can make it clear when an
@@ -8,8 +14,12 @@ import com.telenav.kivakit.annotations.code.quality.TypeQuality
  *
  * @author jonathanl (shibo)
  */
-@UmlClassDiagram(diagram = DiagramCollections::class)
-@TypeQuality(stability = STABLE_EXTENSIBLE, testing = TESTING_INSUFFICIENT, documentation = DOCUMENTED)
+@UmlIncludeType(inDiagrams = [DiagramCollections::class])
+@TypeQuality
+(
+    stability = STABLE_EXTENSIBLE,
+    testing = TESTING_INSUFFICIENT, documentation = DOCUMENTED
+)
 class Stack<Value> : ObjectList<Value>
 {
     constructor()

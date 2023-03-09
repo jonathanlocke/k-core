@@ -298,7 +298,7 @@ abstract class OperationMessage : Named, Message
     {
         if (stackTrace == null)
         {
-            val cause: `var` = cause()
+            val cause = cause()
             if (cause != null)
             {
                 stackTrace = StackTrace(cause)

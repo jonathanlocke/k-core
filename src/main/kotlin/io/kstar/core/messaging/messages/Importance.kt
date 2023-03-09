@@ -63,9 +63,9 @@ class Importance private constructor(level: Double) : Level(level)
          */
         fun registerImportance(low: Class<out Message?>, high: Class<out Message?>): Importance
         {
-            val lowValue: `var` = levels[low].asZeroToOne()
-            val highValue: `var` = levels[high].asZeroToOne()
-            val difference: `var` = highValue - lowValue
+            val lowValue = levels[low].asZeroToOne()
+            val highValue = levels[high].asZeroToOne()
+            val difference = highValue - lowValue
             return importance(lowValue + difference / 2.0)
         }
 

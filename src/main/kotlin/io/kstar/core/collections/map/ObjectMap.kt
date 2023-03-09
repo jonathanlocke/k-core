@@ -17,7 +17,7 @@ open class ObjectMap<Key, Value> : BaseMap<Key, Value>
 
     fun copy(): ObjectMap<Key, Value>
     {
-        val copy: `var` = ObjectMap<Key, Value>()
+        val copy = ObjectMap<Key, Value>()
         copy.putAll(this)
         return copy
     }

@@ -100,7 +100,7 @@ class MultiSet<Key, Value> @JvmOverloads constructor(maximumKeys: Maximum? = MAX
      */
     fun maximumSetSize(): Count
     {
-        var maximum: `var`? = 0
+        var maximum? = 0
         for (set in values())
         {
             maximum = max(set.size(), maximum)
@@ -116,7 +116,7 @@ class MultiSet<Key, Value> @JvmOverloads constructor(maximumKeys: Maximum? = MAX
      */
     fun removeFromSet(key: Key, value: Value)
     {
-        val set: `var` = getOrEmptySet(key)
+        val set = getOrEmptySet(key)
         set.remove(value)
     }
 
@@ -148,7 +148,7 @@ class MultiSet<Key, Value> @JvmOverloads constructor(maximumKeys: Maximum? = MAX
      */
     fun valueCount(): Int
     {
-        var count: `var` = 0
+        var count = 0
         for (set in values())
         {
             if (set != null)

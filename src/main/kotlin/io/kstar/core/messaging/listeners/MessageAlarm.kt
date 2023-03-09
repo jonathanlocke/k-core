@@ -175,7 +175,7 @@ abstract class MessageAlarm : Listener
             else
             {
                 // If we have passed the next allowed trigger time,
-                val allowed: `var` = Time.now().isGreaterThan(nextAllowedTriggerTime)
+                val allowed = Time.now().isGreaterThan(nextAllowedTriggerTime)
                 if (allowed)
                 {
                     // set a new next allowed trigger time

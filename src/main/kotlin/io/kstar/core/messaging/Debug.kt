@@ -158,15 +158,15 @@ class Debug private constructor(type: Class<*>, transceiver: Transceiver) : Mess
             var enabled: Boolean? = null
 
             // Get KIVAKIT_DEBUG property
-            val patternList: `var`? = property("KIVAKIT_DEBUG")
+            val patternList? = property("KIVAKIT_DEBUG")
             if (patternList != null)
             {
                 // and go through each pattern in KIVAKIT_DEBUG
                 for (pattern in patternList.trim().replaceAll("\\s+", " ").split(","))
                 {
                     // looking for "not " at the start of the pattern
-                    var notPrefix: `var` = "not "
-                    var not: `var` = false
+                    var notPrefix = "not "
+                    var not = false
                     if (pattern.startsWith(notPrefix))
                     {
                         pattern = pattern.substring(notPrefix.length())
@@ -182,8 +182,8 @@ class Debug private constructor(type: Class<*>, transceiver: Transceiver) : Mess
                     }
 
                     // and for "extends " at the start of the pattern
-                    val extendsPrefix: `var` = "extends "
-                    val checkParents: `var` = pattern.startsWith(extendsPrefix)
+                    val extendsPrefix = "extends "
+                    val checkParents = pattern.startsWith(extendsPrefix)
                     if (checkParents)
                     {
                         pattern = pattern.substring(extendsPrefix.length())
@@ -214,10 +214,10 @@ class Debug private constructor(type: Class<*>, transceiver: Transceiver) : Mess
                 {
                     // show help message
                     initialized = true
-                    val debug: `var`? = property("KIVAKIT_DEBUG")
-                    val log: `var`? = property("KIVAKIT_LOG")
-                    val kivakitVersion: `var` = resolveProject(KivaKit::class.java).kivakitVersion()
-                    val title: `var` = "KivaKit " + kivakitVersion + " (" + resolveProject(KivaKit::class.java).build() + ")"
+                    val debug? = property("KIVAKIT_DEBUG")
+                    val log? = property("KIVAKIT_LOG")
+                    val kivakitVersion = resolveProject(KivaKit::class.java).kivakitVersion()
+                    val title = "KivaKit " + kivakitVersion + " (" + resolveProject(KivaKit::class.java).build() + ")"
                     if (!isStartupOptionEnabled(QUIET))
                     {
                         globalListener().information(textBox(title, """
@@ -232,7 +232,7 @@ class Debug private constructor(type: Class<*>, transceiver: Transceiver) : Mess
                 }
 
                 // Get enable state for the type parameter
-                val enabled: `var`? = debugEnableState(type)
+                val enabled? = debugEnableState(type)
 
                 // and pick a description of the state
                 val state: String
@@ -263,18 +263,18 @@ class Debug private constructor(type: Class<*>, transceiver: Transceiver) : Mess
 
         private fun matches(type: Class<*>, simplifiedPattern: String, checkParent: Boolean): Boolean
         {
-            val pattern: `var` = simplifiedPattern(simplifiedPattern)
+            val pattern = simplifiedPattern(simplifiedPattern)
             return if (checkParent)
             {
-                var at: `var` = type
+                var at = type
                 while (at != null)
                 {
-                    if (patternMatches(pattern, at.getSimpleName())
-                        || patternMatches(pattern, at.getName()))
+                    if (patternMatches(pattern, at.simpleName)
+                        || patternMatches(pattern, at.name))
                     {
                         return true
                     }
-                    at = at.getSuperclass()
+                    at = at.superclass
                 }
                 false
             }
@@ -285,9 +285,9 @@ class Debug private constructor(type: Class<*>, transceiver: Transceiver) : Mess
             }
         }
 
-        private fun property(key: String): String?
+        private fun property(key: String): String
         {
-            var value: `var`? = System.getProperty(key)
+            var value? = System.getProperty(key)
             if (value == null)
             {
                 value = System.getenv(key)

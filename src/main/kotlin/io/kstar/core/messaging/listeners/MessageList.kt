@@ -107,7 +107,7 @@ open class MessageList(maximumSize: Maximum?, filter: Matcher<Message?>) : Objec
      */
     fun copy(): MessageList
     {
-        val copy: `var` = super.copy() as MessageList
+        val copy = super.copy() as MessageList
         copy.filter = filter
         return copy
     }
@@ -117,7 +117,7 @@ open class MessageList(maximumSize: Maximum?, filter: Matcher<Message?>) : Objec
      */
     override fun count(status: Message.Status): Count
     {
-        var count: `var` = 0
+        var count = 0
         for (message in this)
         {
             if (message.status() === status)
@@ -133,7 +133,7 @@ open class MessageList(maximumSize: Maximum?, filter: Matcher<Message?>) : Objec
      */
     override fun count(type: Class<out Message?>): Count
     {
-        var count: `var` = 0
+        var count = 0
         for (message in this)
         {
             if (type.isAssignableFrom(message.getClass()))
@@ -149,7 +149,7 @@ open class MessageList(maximumSize: Maximum?, filter: Matcher<Message?>) : Objec
      */
     override fun countWorseThanOrEqualTo(status: Message.Status?): Count
     {
-        var count: `var` = 0
+        var count = 0
         for (message in this)
         {
             if (message.status().isWorseThanOrEqualTo(status))
@@ -174,7 +174,7 @@ open class MessageList(maximumSize: Maximum?, filter: Matcher<Message?>) : Objec
      */
     fun formatted(): StringList
     {
-        val messages: `var` = StringList(maximumSize())
+        val messages = StringList(maximumSize())
         for (message in this)
         {
             messages.add(message.formatted())
@@ -196,7 +196,7 @@ open class MessageList(maximumSize: Maximum?, filter: Matcher<Message?>) : Objec
      */
     fun messagesOfType(type: Class<out Message?>): MessageList
     {
-        val messages: `var` = MessageList()
+        val messages = MessageList()
         for (`object` in this)
         {
             if (type.isAssignableFrom(`object`.getClass()))
@@ -290,7 +290,7 @@ open class MessageList(maximumSize: Maximum?, filter: Matcher<Message?>) : Objec
 
         fun captureMessages(broadcaster: Broadcaster, code: Runnable): MessageList
         {
-            val issues: `var` = MessageList()
+            val issues = MessageList()
             issues.listenTo(broadcaster)
             try
             {

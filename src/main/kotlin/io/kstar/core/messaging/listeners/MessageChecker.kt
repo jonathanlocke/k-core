@@ -46,8 +46,8 @@ class MessageChecker : BaseRepeater()
         }
         for (type in types)
         {
-            val count: `var` = messages.messagesOfType(type).size()
-            val expected: `var`? = expectedCount[type]
+            val count = messages.messagesOfType(type).size()
+            val expected? = expectedCount[type]
             if (expected == null)
             {
                 if (count == 0)
@@ -82,7 +82,7 @@ class MessageChecker : BaseRepeater()
      */
     fun expect(messageClass: Class<out Message?>, count: Int): MessageChecker
     {
-        val expected: `var`? = expectedCount[messageClass]
+        val expected? = expectedCount[messageClass]
         if (expected == null)
         {
             expectedCount[messageClass] = count(count)

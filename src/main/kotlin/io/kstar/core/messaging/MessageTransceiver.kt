@@ -99,7 +99,7 @@ interface MessageTransceiver : Transceiver
     </T> */
     fun <T> fatal(cause: Throwable?, text: String?, vararg arguments: Any?): T?
     {
-        val problem: `var` = FatalProblem(cause, text, arguments)
+        val problem = FatalProblem(cause, text, arguments)
         transmit(problem)
         problem.throwMessage()
         return null

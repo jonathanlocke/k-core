@@ -1,6 +1,17 @@
 package io.kstar.core.collections.map
 
 import com.telenav.kivakit.annotations.code.quality.TypeQuality
+import io.kstar.annotations.documentation.UmlIncludeType
+import io.kstar.annotations.quality.Documentation
+import io.kstar.annotations.quality.Documentation.DOCUMENTED
+import io.kstar.annotations.quality.Stability
+import io.kstar.annotations.quality.Stability.STABLE_EXTENSIBLE
+import io.kstar.annotations.quality.Testing
+import io.kstar.annotations.quality.Testing.TESTING_INSUFFICIENT
+import io.kstar.annotations.quality.TypeQuality
+import io.kstar.internal.Diagrams
+import io.kstar.internal.Diagrams.DiagramCollections
+import io.kstar.receptors.collection.SpaceLimited
 import java.util.function.Function
 
 /**
@@ -16,9 +27,17 @@ import java.util.function.Function
  * @author jonathanl (shibo)
  */
 @Suppress("unused")
-@UmlClassDiagram(diagram = DiagramCollections::class)
-@TypeQuality(stability = STABLE_EXTENSIBLE, testing = TESTING_INSUFFICIENT, documentation = DOCUMENTED)
-open class BaseMap<Key, Value>(maximumSize: Maximum, map: MutableMap<Key, Value>) : MutableMap<Key, Value?>, SpaceLimited, GlobalRepeater
+@UmlIncludeType(inDiagrams = [DiagramCollections::class])
+@TypeQuality
+(
+    stability = STABLE_EXTENSIBLE,
+    testing = TESTING_INSUFFICIENT,
+    documentation = DOCUMENTED
+    )
+private open class BaseMap<Key, Value>(maximumSize: Maximum, map: MutableMap<Key, Value>) :
+    MutableMap<Key, Value?>,
+    SpaceLimited,
+    GlobalRepeater
 {
     /** The map to wrap  */
     private val map: MutableMap<Key, Value>
@@ -152,7 +171,7 @@ open class BaseMap<Key, Value>(maximumSize: Maximum, map: MutableMap<Key, Value>
      */
     open operator fun get(key: Key?, defaultValue: Value): Value?
     {
-        val value: `var`? = get(key)
+        val value? = get(key)
         return if (value == null) defaultValue else value
     }
 
@@ -165,7 +184,7 @@ open class BaseMap<Key, Value>(maximumSize: Maximum, map: MutableMap<Key, Value>
      */
     open fun getOrCreate(key: Key): Value?
     {
-        var value: `var`? = map[key]
+        var value? = map[key]
         if (value == null)
         {
             value = onCreateValue(key)
@@ -349,7 +368,7 @@ open class BaseMap<Key, Value>(maximumSize: Maximum, map: MutableMap<Key, Value>
      */
     override fun toString(): String
     {
-        val list: `var` = StringList()
+        val list = StringList()
         for (entry in entries)
         {
             list.add(entry.getKey() + " = " + entry.getValue())

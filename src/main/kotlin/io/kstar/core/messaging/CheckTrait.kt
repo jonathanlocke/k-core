@@ -72,7 +72,7 @@ interface CheckTrait : Repeater, ResultTrait
     {
         return try
         {
-            val result: `var` = code.run()
+            val result = code.run()
             if (result.failed())
             {
                 return failure("Code failed: $", message)
@@ -124,14 +124,14 @@ interface CheckTrait : Repeater, ResultTrait
      */
     fun check(message: String?, code: Runnable): Result<Boolean?>?
     {
-        val result: `var` = failure(message)
+        val result = failure(message)
         return try
         {
             result.listenTo(this)
             code.run()
             if (!ok())
             {
-                val formatted: `var` = stringList("Code broadcast failure")
+                val formatted = stringList("Code broadcast failure")
                     .appendingIfNotNull(message)
                     .join(": ")
                 problem(formatted)
@@ -141,7 +141,7 @@ interface CheckTrait : Repeater, ResultTrait
         }
         catch (e: Exception)
         {
-            val formatted: `var` = stringList("Code threw exception")
+            val formatted = stringList("Code threw exception")
                 .appendingIfNotNull(message)
                 .join(": ")
             problem(e, formatted)

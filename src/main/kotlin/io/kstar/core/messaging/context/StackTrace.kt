@@ -59,13 +59,13 @@ class StackTrace(
         fun simplified(): String?
         {
             // Make type human-readable
-            val type: `var` = type()
+            val type = type()
 
             // If the type is not stack trace itself
             if (!type.equals(StackTrace::class.java.name))
             {
                 // return the frame as a simplified string
-                val context: `var` = "($file:$line)"
+                val context = "($file:$line)"
                 return "  " + rightAlign(context, 40, ' ') + " " + method
             }
 
@@ -94,7 +94,7 @@ class StackTrace(
     init
     {
         frames = arrayOfNulls(elements.size)
-        var index: `var` = 0
+        var index = 0
         for (element in elements)
         {
             frames[index++] = StackFrame(element)
@@ -145,7 +145,7 @@ class StackTrace(
      */
     fun toHtmlString(): String
     {
-        val builder: `var` = StringBuilder()
+        val builder = StringBuilder()
         builder.append("<p><b><font color='#808080'>").append(message).append("</font></b></p>")
         for (frame in frames)
         {
@@ -163,7 +163,7 @@ class StackTrace(
      */
     override fun toString(): String
     {
-        val simple: `var` = "true".equals(System.getProperty("KIVAKIT_SIMPLIFIED_STACK_TRACES"), ignoreCase = true)
+        val simple = "true".equals(System.getProperty("KIVAKIT_SIMPLIFIED_STACK_TRACES"), ignoreCase = true)
         return trace(!simple)
     }
 
@@ -182,7 +182,7 @@ class StackTrace(
 
     private fun trace(full: Boolean): String
     {
-        val builder: `var` = IndentingStringBuilder(indentation(if (full) 4 else 2))
+        val builder = IndentingStringBuilder(indentation(if (full) 4 else 2))
         if (full)
         {
             builder.appendLine("Exception in thread \"" + Thread.currentThread().name + "\""
@@ -192,13 +192,13 @@ class StackTrace(
         {
             builder.appendLine(rightAlign("($exceptionType)", 40, ' '))
         }
-        var index: `var` = 0
-        val limit: `var` = 60
-        val include: `var` = limit / 2
-        var omitted: `var` = false
+        var index = 0
+        val limit = 60
+        val include = limit / 2
+        var omitted = false
         for (frame in frames)
         {
-            val omit: `var` = index > include && index < frames.size - include
+            val omit = index > include && index < frames.size - include
             if (omit)
             {
                 if (!omitted)

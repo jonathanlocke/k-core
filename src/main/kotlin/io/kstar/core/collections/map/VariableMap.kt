@@ -1,6 +1,11 @@
 package io.kstar.core.collections.map
 
-import com.telenav.kivakit.annotations.code.quality.TypeQuality
+import io.kstar.annotations.documentation.UmlIncludeType
+import io.kstar.annotations.quality.Documentation.DOCUMENTED
+import io.kstar.annotations.quality.Stability.STABLE_EXTENSIBLE
+import io.kstar.annotations.quality.Testing.TESTING_INSUFFICIENT
+import io.kstar.annotations.quality.TypeQuality
+import io.kstar.internal.Diagrams.DiagramCollections
 
 /**
  * A bounded map from string to value which supports variable interpolation into a string via [.expand].
@@ -12,8 +17,13 @@ import com.telenav.kivakit.annotations.code.quality.TypeQuality
  * @author jonathanl (shibo)
  */
 @Suppress("unused")
-@UmlClassDiagram(diagram = DiagramCollections::class)
-@TypeQuality(stability = STABLE_EXTENSIBLE, testing = TESTING_INSUFFICIENT, documentation = DOCUMENTED)
+@UmlIncludeType(inDiagrams = [DiagramCollections::class])
+@TypeQuality
+(
+    stability = STABLE_EXTENSIBLE,
+    testing = TESTING_INSUFFICIENT,
+    documentation = DOCUMENTED
+)
 class VariableMap<Value> : StringMap<Value?>, PropertyValue
 {
     /**
@@ -57,7 +67,7 @@ class VariableMap<Value> : StringMap<Value?>, PropertyValue
      */
     fun doubleQuoted(): VariableMap<String>
     {
-        val quoted: `var` = newStringMap()
+        val quoted = newStringMap()
         for (key in keys)
         {
             quoted.add("\"" + key + "\"", "\"" + get(key) + "\"")
@@ -84,26 +94,26 @@ class VariableMap<Value> : StringMap<Value?>, PropertyValue
     {
         if (text.contains("\${"))
         {
-            val builder: `var` = StringBuilder()
-            var pos: `var` = 0
+            val builder = StringBuilder()
+            var pos = 0
             while (true)
             {
-                val next: `var` = text.indexOf("\${", pos)
+                val next = text.indexOf("\${", pos)
                 if (next < 0)
                 {
                     break
                 }
                 builder.append(text, pos, next)
                 pos = next + 2
-                val start: `var` = pos
+                val start = pos
                 while (pos < text.length && isVariableCharacter(text[pos]))
                 {
                     pos++
                 }
                 if (pos > start && text[pos] == '}')
                 {
-                    val variable: `var` = text.substring(start, pos)
-                    val value: `var`? = get(variable)
+                    val variable = text.substring(start, pos)
+                    val value? = get(variable)
                     if (value != null)
                     {
                         builder.append(value)
@@ -136,10 +146,10 @@ class VariableMap<Value> : StringMap<Value?>, PropertyValue
      */
     fun expanded(): VariableMap<String>
     {
-        val expanded: `var` = newStringMap()
+        val expanded = newStringMap()
         for (key in HashSet(keys))
         {
-            val value: `var`? = get(key)
+            val value? = get(key)
             if (value != null)
             {
                 expanded.put(key, expand(value.toString()))
@@ -161,7 +171,7 @@ class VariableMap<Value> : StringMap<Value?>, PropertyValue
      */
     fun withQuotedValues(): VariableMap<String>
     {
-        val quoted: `var` = newStringMap()
+        val quoted = newStringMap()
         for (key in keys)
         {
             quoted.add(key, "'" + get(key) + "'")
@@ -186,7 +196,7 @@ class VariableMap<Value> : StringMap<Value?>, PropertyValue
          */
         fun variableMap(that: Map<String?, String?>): VariableMap<String>
         {
-            val copy: `var` = VariableMap<String>()
+            val copy = VariableMap<String>()
             for (key in that.keys)
             {
                 copy.put(key, that[key])
@@ -199,8 +209,8 @@ class VariableMap<Value> : StringMap<Value?>, PropertyValue
          */
         fun variableMap(list: StringList): VariableMap<String>
         {
-            val variables: `var` = VariableMap<String>()
-            var i: `var` = 0
+            val variables = VariableMap<String>()
+            var i = 0
             while (i < list.size())
             {
                 if (i + 1 < list.size())

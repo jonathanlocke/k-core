@@ -54,16 +54,16 @@ object CallStack
                  vararg ignores: Class<*>?): Method?
     {
         // Get call stack
-        val stack: `var` = callstack()
+        val stack = callstack()
 
         // Find the index of the callee on the stack using the matching rules
-        val callee: `var` = if (calleeType == null) 0 else findCallee(matching, proximity, stack, calleeType)
+        val callee = if (calleeType == null) 0 else findCallee(matching, proximity, stack, calleeType)
 
         // If we found the callee
         if (callee != -1)
         {
             // the caller is the next index
-            var caller: `var` = callee + 1
+            var caller = callee + 1
 
             // except that we may need to ignore some methods
             while (caller < stack.size() && shouldIgnore(stack.get(caller), ignoreMatching, ignores))
@@ -83,10 +83,10 @@ object CallStack
     @Suppress("unused")
     fun callstack(thread: Thread?): List<Method>
     {
-        val stack: `var` = ArrayList<Method>()
+        val stack = ArrayList<Method>()
         for (frame in Thread.currentThread().stackTrace)
         {
-            val method: `var` = method(frame)
+            val method = method(frame)
             if (method != null)
             {
                 stack.add(method)
@@ -100,11 +100,11 @@ object CallStack
                            stack: List<Method>,
                            calleeType: Class<*>): Int
     {
-        var callee: `var` = -1
-        var index: `var` = 0
+        var callee = -1
+        var index = 0
         for (method in stack)
         {
-            val matches: `var` = if (matching == Matching.EXACT) calleeType == method.parentType().asJavaType() else calleeType.isAssignableFrom(method.parentType().asJavaType())
+            val matches = if (matching == Matching.EXACT) calleeType == method.parentType().asJavaType() else calleeType.isAssignableFrom(method.parentType().asJavaType())
             when (proximity)
             {
                 Proximity.DISTANT ->
@@ -137,8 +137,8 @@ object CallStack
 
     private fun shouldIgnore(caller: Method?, matching: Matching, vararg ignores: Class<*>): Boolean
     {
-        var ignored: `var` = false
-        val exact: `var` = matching == Matching.EXACT
+        var ignored = false
+        val exact = matching == Matching.EXACT
         if (caller != null)
         {
             for (ignore in ignores)

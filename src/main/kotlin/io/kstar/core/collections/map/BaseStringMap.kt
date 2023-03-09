@@ -155,7 +155,7 @@ abstract class BaseStringMap<Value> : BaseMap<String?, Value>, GlobalRepeater, T
      */
     fun asPathString(key: String?): String?
     {
-        val value: `var`? = asString(key)
+        val value? = asString(key)
         return if (value == null) null else Strip.stripTrailing(value, "/")
     }
 
@@ -184,7 +184,7 @@ abstract class BaseStringMap<Value> : BaseMap<String?, Value>, GlobalRepeater, T
      */
     fun asStringIdentifier(key: String?): StringIdentifier
     {
-        val value: `var` = get(key).toString()
+        val value = get(key).toString()
         return StringIdentifier(value)
     }
 
@@ -194,8 +194,8 @@ abstract class BaseStringMap<Value> : BaseMap<String?, Value>, GlobalRepeater, T
      */
     fun asStringList(): StringList
     {
-        val entries: `var` = StringList()
-        val keys: `var` = ArrayList(keys)
+        val entries = StringList()
+        val keys = ArrayList(keys)
         keys.sort(Comparator.naturalOrder())
         for (key in keys)
         {
@@ -234,7 +234,7 @@ abstract class BaseStringMap<Value> : BaseMap<String?, Value>, GlobalRepeater, T
     {
         if (key != null)
         {
-            val value: `var`? = get(key)
+            val value? = get(key)
             if (value != null)
             {
                 return tryCatch({ converter.apply(value.toString()) },
@@ -260,7 +260,7 @@ abstract class BaseStringMap<Value> : BaseMap<String?, Value>, GlobalRepeater, T
     {
         if (key != null)
         {
-            val value: `var`? = get(key)
+            val value? = get(key)
             if (value != null)
             {
                 return tryCatch({ converter.apply(listener, value.toString()) },

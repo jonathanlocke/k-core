@@ -135,8 +135,8 @@ class StringList : ObjectList<String>
      */
     fun asVariableMap(): VariableMap<String>
     {
-        val variables: `var` = VariableMap<String>()
-        var i: `var` = 0
+        val variables = VariableMap<String>()
+        var i = 0
         while (i < size)
         {
             if (i + 1 < size)
@@ -171,7 +171,7 @@ class StringList : ObjectList<String>
      */
     fun doubleQuoted(): StringList
     {
-        val quoted: `var` = StringList(maximumSize())
+        val quoted = StringList(maximumSize())
         for (value in this)
         {
             quoted.add("\"" + value + "\"")
@@ -184,7 +184,7 @@ class StringList : ObjectList<String>
      */
     fun doubleSpaced(): StringList
     {
-        val doubleSpaced: `var` = stringList()
+        val doubleSpaced = stringList()
         for (at in this)
         {
             if (doubleSpaced.isNonEmpty())
@@ -220,8 +220,8 @@ class StringList : ObjectList<String>
     @JvmOverloads
     fun indented(spaces: Int, indent: String? = " "): StringList
     {
-        val copy: `var` = StringList()
-        val i: `var` = 0
+        val copy = StringList()
+        val i = 0
         for (string in this)
         {
             copy.add(AsciiArt.repeat(spaces, indent) + string)
@@ -295,8 +295,8 @@ class StringList : ObjectList<String>
      */
     override fun numbered(): StringList
     {
-        val numbered: `var` = newInstance()
-        var number: `var` = 1
+        val numbered = newInstance()
+        var number = 1
         for (value in this)
         {
             numbered.add(number.toString() + ". " + value)
@@ -318,7 +318,7 @@ class StringList : ObjectList<String>
      */
     fun prefixedWith(prefix: String): StringList
     {
-        val prefixed: `var` = newInstance()
+        val prefixed = newInstance()
         for (string in this)
         {
             prefixed.add(prefix + string)
@@ -376,7 +376,7 @@ class StringList : ObjectList<String>
      */
     fun singleQuoted(): StringList
     {
-        val quoted: `var` = newInstance()
+        val quoted = newInstance()
         for (value in this)
         {
             quoted.add("'$value'")
@@ -416,9 +416,9 @@ class StringList : ObjectList<String>
     /**
      * Removes all leading and trailing blank lines
      */
-    fun trim(): StringList?
+    fun trim(): StringList
     {
-        var trimmed: `var`? = copy()
+        var trimmed? = copy()
         while (trimmed.first().isBlank())
         {
             trimmed = trimmed.tail()
@@ -523,7 +523,7 @@ class StringList : ObjectList<String>
          */
         fun repeat(text: String?, times: Int): StringList
         {
-            val list: `var` = StringList()
+            val list = StringList()
             for (i in 0 until times)
             {
                 list.add(text)
@@ -558,11 +558,11 @@ class StringList : ObjectList<String>
             {
                 return StringList(maximumSize)
             }
-            val strings: `var` = StringList(maximumSize)
-            var pos: `var` = 0
+            val strings = StringList(maximumSize)
+            var pos = 0
             while (true)
             {
-                val next: `var` = string.indexOf(delimiter, pos)
+                val next = string.indexOf(delimiter, pos)
                 if (next == -1)
                 {
                     strings.add(string.substring(pos))
@@ -586,12 +586,12 @@ class StringList : ObjectList<String>
             {
                 return StringList(maximumSize)
             }
-            val strings: `var` = StringList(maximumSize)
-            val delimiterLength: `var` = delimiter.length
-            var pos: `var` = 0
+            val strings = StringList(maximumSize)
+            val delimiterLength = delimiter.length
+            var pos = 0
             while (true)
             {
-                val next: `var` = text.indexOf(delimiter, pos)
+                val next = text.indexOf(delimiter, pos)
                 if (next == -1)
                 {
                     strings.add(text.substring(pos))
@@ -611,7 +611,7 @@ class StringList : ObjectList<String>
          */
         fun splitOnPattern(text: String, pattern: String): StringList
         {
-            val list: `var` = StringList()
+            val list = StringList()
             list.addAll(text.split(pattern.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray())
             return list
         }
@@ -629,7 +629,7 @@ class StringList : ObjectList<String>
          */
         fun <T> stringList(maximumSize: Maximum?, values: Iterable<T>): StringList
         {
-            val list: `var` = StringList(maximumSize)
+            val list = StringList(maximumSize)
             for (value in values)
             {
                 list.addIfNotNull(value.toString())
@@ -650,7 +650,7 @@ class StringList : ObjectList<String>
          */
         fun <T> stringList(values: Iterable<T>): StringList
         {
-            val list: `var` = StringList()
+            val list = StringList()
             for (value in values)
             {
                 list.addIfNotNull(value.toString())
@@ -663,7 +663,7 @@ class StringList : ObjectList<String>
          */
         fun stringList(maximumSize: Maximum?, vararg strings: String?): StringList
         {
-            val list: `var` = StringList(maximumSize)
+            val list = StringList(maximumSize)
             list.addAll(Arrays.asList(*strings))
             return list
         }

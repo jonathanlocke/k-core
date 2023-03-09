@@ -74,7 +74,7 @@ class CountMap<Key> : ObjectMap<Key, ConcurrentMutableCount?>
         comparator: Comparator<in MutableMap.MutableEntry<Key, ConcurrentMutableCount?>?>?): ObjectList<Map.Entry<Key, ConcurrentMutableCount>>
     {
         assert(maximum != null)
-        val sorted: `var` = ObjectList(entries)
+        val sorted = ObjectList(entries)
         sorted.sort(comparator)
         return sorted.subList(0, min(sorted.size(), maximum.asInt()))
     }
@@ -92,7 +92,7 @@ class CountMap<Key> : ObjectMap<Key, ConcurrentMutableCount?>
      */
     fun bottom(maximum: Maximum?, comparator: Comparator<in MutableMap.MutableEntry<Key, ConcurrentMutableCount?>?>?): CountMap<Key>
     {
-        val bottom: `var` = CountMap<Key>()
+        val bottom = CountMap<Key>()
         for (entry in ascendingEntries(maximum, comparator))
         {
             bottom.plus(entry.getKey(), entry.getValue())
@@ -115,7 +115,7 @@ class CountMap<Key> : ObjectMap<Key, ConcurrentMutableCount?>
      */
     fun decrement(key: Key): CountMap<Key>
     {
-        val count: `var`? = computeIfAbsent(key, Function { ignored: Key? -> ConcurrentMutableCount() })
+        val count? = computeIfAbsent(key, Function { ignored: Key? -> ConcurrentMutableCount() })
         count.decrement()
         total.decrementAndGet()
         return this
@@ -139,7 +139,7 @@ class CountMap<Key> : ObjectMap<Key, ConcurrentMutableCount?>
      */
     fun increment(key: Key): CountMap<Key>
     {
-        val count: `var`? = computeIfAbsent(key, Function { ignored: Key? -> ConcurrentMutableCount() })
+        val count? = computeIfAbsent(key, Function { ignored: Key? -> ConcurrentMutableCount() })
         count.increment()
         total.incrementAndGet()
         return this
@@ -150,7 +150,7 @@ class CountMap<Key> : ObjectMap<Key, ConcurrentMutableCount?>
      */
     fun join(separator: String?): String
     {
-        val list: `var` = StringList()
+        val list = StringList()
         for (key in sortedKeys())
         {
             list.add(key.toString() + " = " + count(key))
@@ -163,7 +163,7 @@ class CountMap<Key> : ObjectMap<Key, ConcurrentMutableCount?>
      */
     fun maximum(): Key?
     {
-        var maximum: `var` = Long.MIN_VALUE
+        var maximum = Long.MIN_VALUE
         var minimumKey: Key? = null
         for (entry in entries)
         {
@@ -192,7 +192,7 @@ class CountMap<Key> : ObjectMap<Key, ConcurrentMutableCount?>
      */
     fun minimum(): Key?
     {
-        var minimum: `var` = Long.MAX_VALUE
+        var minimum = Long.MAX_VALUE
         var minimumKey: Key? = null
         for (entry in entries)
         {
@@ -219,9 +219,9 @@ class CountMap<Key> : ObjectMap<Key, ConcurrentMutableCount?>
      */
     fun plus(key: Key, value: Long): Count
     {
-        val count: `var`? = computeIfAbsent(key, Function { ignored: Key? -> ConcurrentMutableCount() })
+        val count? = computeIfAbsent(key, Function { ignored: Key? -> ConcurrentMutableCount() })
         count.plus(value)
-        val total: `var` = total.addAndGet(value)
+        val total = total.addAndGet(value)
         return Count.count(total)
     }
 
@@ -230,7 +230,7 @@ class CountMap<Key> : ObjectMap<Key, ConcurrentMutableCount?>
      */
     fun pruneCountsLessThan(minimum: Count): CountMap<Key>
     {
-        val counts: `var` = CountMap<Key>()
+        val counts = CountMap<Key>()
         for (entry in entries)
         {
             if (entry.getValue().asLong() >= minimum.get())
@@ -267,7 +267,7 @@ class CountMap<Key> : ObjectMap<Key, ConcurrentMutableCount?>
     {
         val entries: List<Map.Entry<Key, ConcurrentMutableCount>> = ArrayList<Map.Entry<Key, ConcurrentMutableCount>>(entries)
         entries.sort(java.util.Map.Entry.comparingByValue<Key, ConcurrentMutableCount>())
-        val sorted: `var` = ObjectList<Key>()
+        val sorted = ObjectList<Key>()
         for (entry in entries)
         {
             sorted.add(entry.getKey())
@@ -311,7 +311,7 @@ class CountMap<Key> : ObjectMap<Key, ConcurrentMutableCount?>
      */
     fun top(maximum: Maximum?, comparator: Comparator<Map.Entry<Key, ConcurrentMutableCount?>?>): CountMap<Key>
     {
-        val top: `var` = CountMap<Key>()
+        val top = CountMap<Key>()
         for (entry in descendingEntries(maximum, comparator))
         {
             top.plus(entry.getKey(), entry.getValue())

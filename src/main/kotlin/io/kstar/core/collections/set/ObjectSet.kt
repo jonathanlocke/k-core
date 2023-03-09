@@ -270,7 +270,7 @@ class ObjectSet<Value> : BaseSet<Value?>
         @SafeVarargs
         fun <T> set(vararg values: T): ObjectSet<T>
         {
-            val set: `var` = ObjectSet<T>()
+            val set = ObjectSet<T>()
             set.addAll(values)
             return set
         }
@@ -282,7 +282,7 @@ class ObjectSet<Value> : BaseSet<Value?>
          */
         fun <T> set(values: Collection<T>?): ObjectSet<T>
         {
-            val set: `var` = ObjectSet<T>()
+            val set = ObjectSet<T>()
             set.addAll(values)
             return set
         }

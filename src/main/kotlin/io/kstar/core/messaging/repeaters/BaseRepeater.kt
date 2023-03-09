@@ -80,7 +80,7 @@ open class BaseRepeater : Multicaster, Repeater
     fun onReceive(transmittable: Transmittable)
     {
         // Cast the message,
-        val message: `var` = transmittable as Message
+        val message = transmittable as Message
 
         // and if it represents a failure,
         if (message.isFailure())

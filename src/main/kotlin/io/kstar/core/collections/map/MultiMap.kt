@@ -96,7 +96,7 @@ class MultiMap<Key, Value> : BaseMap<Key, ObjectList<Value>>
      */
     fun flatValues(): ObjectList<Value>
     {
-        val values: `var` = ObjectList<Value>()
+        val values = ObjectList<Value>()
         for (list in values)
         {
             values.addAll(list)
@@ -120,7 +120,7 @@ class MultiMap<Key, Value> : BaseMap<Key, ObjectList<Value>>
      */
     fun maximumListSize(): Count
     {
-        var maximum: `var`? = 0
+        var maximum? = 0
         for (list in values)
         {
             maximum = max(list.size, maximum)
@@ -146,7 +146,7 @@ class MultiMap<Key, Value> : BaseMap<Key, ObjectList<Value>>
      */
     fun valueCount(): Int
     {
-        var count: `var` = 0
+        var count = 0
         for (list in values)
         {
             if (list != null)

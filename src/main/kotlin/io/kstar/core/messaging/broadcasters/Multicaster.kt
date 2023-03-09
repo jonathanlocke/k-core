@@ -137,7 +137,7 @@ open class Multicaster : Broadcaster
         }
         ensureNotNull(listener)
         lock().write {
-            val receiver: `var` = AudienceMember(listener, filter)
+            val receiver = AudienceMember(listener, filter)
             if (!audience.contains(receiver))
             {
                 audience.add(receiver)
@@ -206,16 +206,16 @@ open class Multicaster : Broadcaster
      */
     fun listenerChain(): StringList
     {
-        val chain: `var` = stringList()
-        var at: `var` = this as Broadcaster
+        val chain = stringList()
+        var at = this as Broadcaster
         while (at.messageSource() != null)
         {
-            val owner: `var` = Mixins.owner(at)
+            val owner = Mixins.owner(at)
             if (owner != null)
             {
                 at = owner
             }
-            var name: `var` = simpleName(at.getClass())
+            var name = simpleName(at.getClass())
             if (at.listeners().isEmpty())
             {
                 name += " (No Listener)"
@@ -231,7 +231,7 @@ open class Multicaster : Broadcaster
      */
     fun listenerTree(): String
     {
-        val builder: `var` = IndentingStringBuilder(TEXT, indentation(4))
+        val builder = IndentingStringBuilder(TEXT, indentation(4))
         listenerTree(builder)
         return builder.toString()
     }
@@ -242,7 +242,7 @@ open class Multicaster : Broadcaster
     fun listeners(): List<Listener>
     {
         return lock().read {
-            val list: `var` = ArrayList<Listener>()
+            val list = ArrayList<Listener>()
             for (member in audience)
             {
                 list.add(member.listener())
