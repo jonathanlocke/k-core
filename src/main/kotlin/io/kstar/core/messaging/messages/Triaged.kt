@@ -29,5 +29,5 @@ interface Triaged
      * Returns the severity of this object
      */
     @UmlRelation(label = "has")
-    fun severity(): Severity?
+    fun severity(): Severity
 }

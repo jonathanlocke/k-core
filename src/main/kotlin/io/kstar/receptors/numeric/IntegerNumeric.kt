@@ -3,6 +3,8 @@
 package io.kstar.receptors.numeric
 
 import io.kstar.core.language.Longs.inRange
+import io.kstar.core.values.Count
+import io.kstar.core.values.Count.Companion.count
 import io.kstar.receptors.numeric.IntegerNumeric.Companion.div
 import io.kstar.receptors.numeric.IntegerNumeric.Companion.minus
 import io.kstar.receptors.numeric.IntegerNumeric.Companion.plus
@@ -75,9 +77,12 @@ import kotlin.math.min
 interface IntegerNumeric<Value : IntegerNumeric<Value>> :
     ScalarValueFactory<Long, Value>,
     Zeroable,
-    Comparable<Value>
+    Comparable<Value>,
+    Countable
 {
     fun asLong(): Long
+
+    override fun count(): Count = count(asLong())
 
     fun asByte(): Byte = asLong().toByte()
     fun asChar(): Char = asInt().toChar()

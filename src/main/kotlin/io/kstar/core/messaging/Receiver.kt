@@ -4,16 +4,10 @@ import io.kstar.annotations.documentation.UmlIncludeType
 import io.kstar.annotations.documentation.UmlRelation
 import io.kstar.internal.Diagrams.DiagramMessaging
 
-
 /**
- * A receiver of  [Transmittable] messages with similar function to a [Consumer], a sink, a callback or a
- * target.
+ * A receiver of [Transmittable] messages
  *
- *
- *
- * If the [.isReceiving] method returns true, then a call to [.receive] will result in a
- * call to [.onReceive].
- *
+ * If the [isReceiving] method returns true, then a call to [receive] will result in a call to [onReceive].
  *
  * @author Jonathan Locke
  * @see Transmittable

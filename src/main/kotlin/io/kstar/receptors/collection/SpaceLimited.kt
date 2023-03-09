@@ -47,8 +47,6 @@ interface SpaceLimited : Sized
      * @param values The number of values that could not be added
      */
     fun onOutOfRoom(values: Int)
-    {
-    }
 
     /**
      * Returns the amount of room remaining

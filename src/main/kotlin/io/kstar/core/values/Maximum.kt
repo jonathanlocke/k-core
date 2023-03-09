@@ -2,10 +2,10 @@
 
 package io.kstar.core.values
 
-import io.kstar.receptors.numeric.Countable
+import io.kstar.receptors.numeric.IntegerNumeric
 
 @JvmInline
-value class Maximum(private val value: Long) : Countable<Maximum>
+value class Maximum(private val value: Long) : IntegerNumeric<Maximum>
 {
     constructor(value: Int) : this(value.toLong())
 

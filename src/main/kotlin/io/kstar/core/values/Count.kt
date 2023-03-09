@@ -5,10 +5,10 @@ package io.kstar.core.values
 import io.kstar.core.language.Iterables.size
 import io.kstar.core.language.Iterators.size
 import io.kstar.receptors.numeric.CountRange
-import io.kstar.receptors.numeric.Countable
+import io.kstar.receptors.numeric.IntegerNumeric
 
 @JvmInline
-value class Count(private val value: Long) : Countable<Count>
+value class Count(private val value: Long) : IntegerNumeric<Count>
 {
     constructor(value: Int) : this(value.toLong())
 

@@ -9,6 +9,7 @@ import io.kstar.core.values.Bytes.Companion.megabytes
 import io.kstar.core.values.Bytes.Companion.petabytes
 import io.kstar.core.values.Bytes.Companion.terabytes
 import io.kstar.receptors.numeric.Countable
+import io.kstar.receptors.numeric.IntegerNumeric
 import io.kstar.receptors.strings.AsString
 import io.kstar.receptors.strings.StringFormat
 import io.kstar.receptors.strings.StringFormat.*
@@ -61,7 +62,7 @@ import kotlin.math.roundToLong
  * @author Jonathan Locke
  * @see Countable
  */
-class Bytes(val bytes: Long) : Countable<Bytes>, AsString
+class Bytes(val bytes: Long) : IntegerNumeric<Bytes>, AsString
 {
     constructor(value: Int) : this(value.toLong())
 

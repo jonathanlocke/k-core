@@ -3,7 +3,7 @@
 package io.kstar.core.values
 
 import io.kstar.core.values.bits.Bits.parseBits
-import io.kstar.receptors.numeric.Countable
+import io.kstar.receptors.numeric.IntegerNumeric
 import io.kstar.receptors.numeric.IntegerNumeric.Companion.minus
 import java.lang.Long.numberOfLeadingZeros
 
@@ -13,7 +13,7 @@ import java.lang.Long.numberOfLeadingZeros
  * @author Jonathan Locke
  */
 @JvmInline
-value class BitCount(private val bits: Long) : Countable<BitCount>
+value class BitCount(private val bits: Long) : IntegerNumeric<BitCount>
 {
     constructor(value: Int) : this(value.toLong())
 
